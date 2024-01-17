@@ -1,61 +1,24 @@
-## Creating an EC2 Instance in AWS and Installing Terraform
+## Bootstrap a Kubernetes Cluster using Kubeadm
 
 To begin, log in to AWS Console.
 
-### Task-1: Installing Terraform on Ubuntu 20.04 operating system
+### Task 1: Launching Instances on AWS
 
-* Manually Launch a `t2.micro` instance with OS version as `Ubuntu 22.04 LTS` in North Virginia (us-east-1) Region.
-* Use tag "`Name : TerraformServer`"
-* Create a new Keypair with the Name `Terraform-Keypair-YourName`
-* In security groups, include ports `22 (SSH)` and `80 (HTTP)`.
-* Configure Storage: 10 GiB
+* Manually Launch 3 `t2.medium` instance with OS version as `Ubuntu 22.04 LTS` in North Virginia (us-east-1) Region.
+* Instead of opening all ports you can open these ports internally.
+    |      Nodes	      |    Port Number	 |         Use Case                       |
+    |-------------------|------------------|----------------------------------------|
+    | Master, Workers	  |       2379       |  Etcd Client API                       |
+    | Master, Workers   |       2380       |  Etcd Server API                       |
+    | Master            |       6443	   	 |  Kubernetes API Server (Secure Port)   |
+    | Master, Workers   |   6782 – 6784    |  Weave Net Server/Client API #CNI      |
+    | Master, Workers   |   10250 – 10255	 |  Kubelet Communication                 |
+    | Workers           |   30000 – 32767	 |  Reserved of NodePort Ips              |	                         
+      	            
+      	          
+      	                  
 * Launch the Instance.
-* Once Launched, Connect to the Instance using `MobaXterm` or `Putty` or `EC2 Instance Connect` with username "`ubuntu`".
 
-Once the EC2 is ready, follow the below Commands to perform lab:
-```
-sudo hostnamectl set-hostname TerraformServer
-bash
-```
-```
-sudo apt update
-```
-```
-sudo apt install wget unzip -y
-```
-```
-wget https://releases.hashicorp.com/terraform/1.6.3/terraform_1.6.3_linux_amd64.zip
-```
-To know the latest Terraform version - [Install Terraform](https://developer.hashicorp.com/terraform/downloads)
-```
-unzip terraform_1.6.3_linux_amd64.zip
-```
-```
-ls
-sudo mv terraform /usr/local/bin
-```
-```
-rm terraform_1.6.3_linux_amd64.zip
-```
-```
-ls
-terraform
-```
-```
-terraform -v
-```
-
-### Task-2: Install Required Packages and login to Ubuntu server using Credentials. 
-```
-sudo apt-get install python3-pip -y
-```
-```
-sudo pip3 install awscli
-```
-```
-aws configure
-```
-* When it prompts for Credentials, Enter the Keys as example shown below
   
 | `Access Key ID.` | `Secret Access Key ID.` |
 | ------------------ | ------------------------- |

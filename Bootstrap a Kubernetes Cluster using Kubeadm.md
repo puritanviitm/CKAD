@@ -20,18 +20,20 @@ To begin, log in to AWS Console.
 ### Task-2: Setting up Machines
 * All steps in this task are to be performed on all the machines
 * Connect all VMs with putty.
-#Switch to root.
+Switch to root.
+```
 sudo su
-
- 
-#Download the script to install and configure kubeadm using the link on all the 3 instances.
-
+``` 
+Download the script to install and configure Kubeadm using the link on all the 3 instances.
+```
 wget https://ckad.s3.ap-northeast-1.amazonaws.com/kubeadm-setup.sh
-
-#OR
-#Create kubeadm.sh script file
+```
+OR
+Create kubeadm.sh script file
+```
 vi kubeadm-setup.sh
-------------------------------------------------------------------------------------
+```
+```
 #!/bin/bash
 sudo apt-get update
 sudo apt-get install apt-transport-https ca-certificates curl gnupg-agent software-properties-common -y
@@ -59,13 +61,14 @@ sudo echo 'deb http://apt.kubernetes.io/ kubernetes-xenial main' >> /etc/apt/sou
 sudo apt-get update
 sudo apt-get install -y kubelet=1.23.0-00 kubeadm=1.23.0-00 kubectl=1.23.0-00
 
---------------------------------------------------------------------------------------
-#save the file using "ESCAPE + :wq!"
+```
+Save the file using "ESCAPE + :wq!"
 
+Run the script to set up and configure kubeadm on all 3 instances.
 
-#Run the script to setup and configure kubeadm on all 3 instances.
-
+```
 bash kubeadm-setup.sh
+```
 
 -----------------------------------------------------------------------
 Task 3: Initializing the Cluster

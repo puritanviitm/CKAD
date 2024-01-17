@@ -37,7 +37,6 @@ Read logs
 ```
 kubectl logs <name of jobpod>
 ```
-HELLO WORLD !!!!!
 
 Describe the job
 ```
@@ -81,14 +80,9 @@ kubectl create -f cronjob.yaml
 ```
 kubectl get cronjobs.batch
 ```
-NAME            SCHEDULE      SUSPEND   ACTIVE   LAST SCHEDULE   AGE
-cronjob-hello   */1 * * * *   False     0        28s             42s
 ```
 kubectl get pod
 ```
-NAME                           READY   STATUS      RESTARTS   AGE
-cronjob-hello-27991419-lz69c   0/1     Completed   0          42s
 ```
 kubectl logs cronjob-hello-27991419-lz69c
 ```
-Hello World!

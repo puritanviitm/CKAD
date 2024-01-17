@@ -70,108 +70,108 @@ Run the script to set up and configure kubeadm on all 3 instances.
 bash kubeadm-setup.sh
 ```
 
------------------------------------------------------------------------
-Task 3: Initializing the Cluster
------------------------------------------------------------------------
-#Set the hostname to all the three nodes as master, worker1, worker2 in their respective terminals for easy understanding, by running the below command:
+### Task 3: Initializing the Cluster
 
-#on control node(master)
-hostnamectl set-hostname master  
+Set the hostname to all three nodes as master, worker1, and worker2 in their respective terminals for easy understanding, by running the below command:
 
-#on Worker node-1
+On control node(master)
+```
+hostnamectl set-hostname master
+``` 
+
+On Worker node-1
+```
 hostnamectl set-hostname worker1
+```
 
-
-#on Worker node-2
+On Worker node-2
+```
 hostnamectl set-hostname worker2
+```
 
-#Start kubeadm only on master.
+Start kubeadm only on master
+```
 kubeadm init
-
+```
 
 If it runs successfully, it will provide a join command which can be used to join the master. Make a note of the highlighted part.
----------------------------------------------------------------------------
-#If you want to list and generate tokens again to join worker nodes, then follow the below steps.
 
+If you want to list and generate tokens again to join worker nodes, then follow the below steps.
+```
 kubeadm token list
 kubeadm token create  --print-join-command
+```
  
------------------------------------------------------------------------ 
-Task 4: Joining a Cluster
------------------------------------------------------------------------
+### Task 4: Joining a Cluster
 
-#Run the kubeadm join command in worker nodes, that was previously noted from the
-master node in the previous task.
-
+Run the kubeadm join command in worker nodes, that was previously noted from the master node in the previous task.
+```
 kubeadm join --token <your_token> --discovery-token-ca-cert- hash <your_discovery_token>
+```
 
- 
-#Run the following commands to configure kubectl on master.
-
+Run the following commands to configure kubectl on master.
+```
 mkdir -p $HOME/.kube
 cp -i /etc/kubernetes/admin.conf $HOME/.kube/config 
 chown $(id -u):$(id -g) $HOME/.kube/config
-
+```
 OR
 
-#Alternatively, if you are the root user, you can run:
+Alternatively, if you are the root user, you can run:
+```
 export KUBECONFIG=/etc/kubernetes/admin.conf
+```
 
-
-#View node information on the master. The nodes will not be ready.
+View node information on the master. The nodes will not be ready.
+```
 kubectl get nodes
-     
+```
 
+### Task 5: Deploy Container Networking Interface
 
-
-
------------------------------------------------------------------------ 
-Task 5: Deploy Container Networking Interface
-
------------------------------------------------------------------------ 
-# Apply weave CNI (Container Network Interface) as shown below:
-
+Apply weave CNI (Container Network Interface) as shown below:
+```
 kubectl apply -f https://github.com/weaveworks/weave/releases/download/v2.8.1/weave-daemonset-k8s.yaml
-
+```
 (reference link1:- https://www.weave.works/docs/net/latest/kubernetes/kube-addon/)
 
-
-
-#View nodes to see that they are ready.
+View nodes to see that they are ready.
+```
 kubectl get nodes
+```
 
-#View all Pods including system Pods and see that dns and weave are running.
+View all Pods including system Pods and see that dns and weave are running.
+```
 kubectl get pod -n kube-system
+```
 
+### Task 6: Create Pods
 
-     
-
-
------------------------------------------------------------------------ 
-Task 6: Create Pods
-
------------------------------------------------------------------------ 
-#Create a Pod called http based on a Docker image on the master.
+Create a Pod called http based on a Docker image on the master.
+```
 kubectl run httpd --image=httpd
+```
 
-#View the status of Pod and make sure it’s in the running state.
+View the status of Pod and make sure it’s in the running state.
+```
 kubectl get pods
+```
 
-
-#Get a shell to the container in the Pod using the Pod name from the previous step.
+Get a shell to the container in the Pod using the Pod name from the previous step.
+```
 kubectl exec -it <pod_name> -- /bin/bash
-i.e
-kubectl exec -it httpd -- /bin/bash
+``` 
 
-   
-
-#Install curl in the container.
+Install curl in the container
+```
 apt update
 apt install curl -y
+```
 
-
-#Run curl on the localhost (container) to verify the http installation.
+Run curl on the localhost (container) to verify the http installation.
+```
 curl localhost 
 exit
+```
  
 

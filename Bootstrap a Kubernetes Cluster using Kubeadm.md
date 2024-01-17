@@ -7,13 +7,13 @@ To begin, log in to AWS Console.
 * Manually Launch 3 `t2.medium` instance with OS version as `Ubuntu 22.04 LTS` in North Virginia (us-east-1) Region.
 * Instead of opening all ports you can open these ports internally.
     |      Nodes	      |    Port Number	 |         Use Case                       |
-    |-------------------|------------------|----------------------------------------|
+    |---------------------|------------------|----------------------------------------|
     | Master, Workers	  |       2379       |  Etcd Client API                       |
-    | Master, Workers   |       2380       |  Etcd Server API                       |
-    | Master            |       6443	   	 |  Kubernetes API Server (Secure Port)   |
-    | Master, Workers   |   6782 – 6784    |  Weave Net Server/Client API #CNI      |
-    | Master, Workers   |   10250 – 10255	 |  Kubelet Communication                 |
-    | Workers           |   30000 – 32767	 |  Reserved of NodePort Ips              |	                         
+    | Master, Workers     |       2380       |  Etcd Server API                       |
+    | Master              |       6443	   	 |  Kubernetes API Server (Secure Port)   |
+    | Master, Workers     |   6782 – 6784    |  Weave Net Server/Client API #CNI      |
+    | Master, Workers     |   10250 – 10255	 |  Kubelet Communication                 |
+    | Workers             |   30000 – 32767	 |  Reserved of NodePort Ips              |	                         
       	            
       	          
       	                  

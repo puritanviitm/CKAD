@@ -107,31 +107,47 @@ bash kubeadm-setup.sh
 
 ### Task 3: Initializing the Cluster
 
-Set the hostname to all three nodes as master, worker1, and worker2 in their respective terminals for easy understanding, by running the below command:
+rename the VM's as Master, Node1 and Node2 from the AWS Console.
 
-Connect all VMs with putty.
+Set the hostname to all three nodes as master, Node1, and Node2 in their respective terminals for easy understanding, by running the below command:
+
+Connect to Master.
 
 Switch to root.
 ```
 sudo su
 ```
 ```
+hostnamectl set-hostname master
+```
+```
 bash
 ```
 
-On control node(master)
-```
-hostnamectl set-hostname master
-``` 
+Connect to Node1.
 
-On Worker node-1
+Switch to root.
 ```
-hostnamectl set-hostname worker1
+sudo su
+```
+```
+hostnamectl set-hostname Node1
+```
+```
+bash
 ```
 
-On Worker node-2
+Connect to Node2.
+
+Switch to root.
 ```
-hostnamectl set-hostname worker2
+sudo su
+```
+```
+hostnamectl set-hostname node2
+```
+```
+bash
 ```
 
 Start kubeadm only on master

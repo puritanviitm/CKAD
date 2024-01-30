@@ -12,7 +12,7 @@ To begin, log in to AWS Console.
     |---------------------|------------------|----------------------------------------|
     | Master, Workers	  |    2379-2380     |  Etcd Client API / Server API          |
     | Master              |       6443	   	 |  Kubernetes API Server (Secure Port)   |
-    | Master, Workers     |   6782–6784      |  Weave Net Server/Client API #CNI      |
+    | Master, Workers     |   6782-6784      |  Weave Net Server/Client API #CNI      |
     | Master, Workers     |   10250–10255	 |  Kubelet Communication                 |
     | Workers             |   30000–32767	 |  Reserved of NodePort Ips              |	   
 * Launch the Instance.

@@ -8,12 +8,11 @@ To begin, log in to AWS Console.
 * Instead of opening all ports you can open these ports internally.
     |      Nodes	      |    Port Number	 |         Use Case                       |
     |---------------------|------------------|----------------------------------------|
-    | Master, Workers	  |       2379       |  Etcd Client API                       |
-    | Master, Workers     |       2380       |  Etcd Server API                       |
+    | Master, Workers	  |    2379-2380     |  Etcd Client API / Server API          |
     | Master              |       6443	   	 |  Kubernetes API Server (Secure Port)   |
-    | Master, Workers     |   6782 – 6784    |  Weave Net Server/Client API #CNI      |
-    | Master, Workers     |   10250 – 10255	 |  Kubelet Communication                 |
-    | Workers             |   30000 – 32767	 |  Reserved of NodePort Ips              |	   
+    | Master, Workers     |   6782–6784      |  Weave Net Server/Client API #CNI      |
+    | Master, Workers     |   10250–10255	 |  Kubelet Communication                 |
+    | Workers             |   30000–32767	 |  Reserved of NodePort Ips              |	   
 * Launch the Instance.
 
 

@@ -18,7 +18,7 @@ To begin, log in to AWS Console.
     | Workers             |   `30000-32767`	 |  Reserved of NodePort Ips              |	   
 
 
-* Add the below code in user data.
+* Add the below code in Advanced Details -> User data - optional.
 ```
 #!/bin/bash
 sudo apt-get update

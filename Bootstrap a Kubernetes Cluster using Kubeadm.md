@@ -6,6 +6,8 @@ To begin, log in to AWS Console.
 
 * 3 instances of `t2.medium` instance with OS version as `Ubuntu 22.04 LTS` in your preferred region.
 * Instead of opening all ports you can open these ports internally.
+* `Type : Custom TCP`
+* `Source type : Anywhere`
     |      Nodes	      |    Port Number	 |         Use Case                       |
     |---------------------|------------------|----------------------------------------|
     | Master, Workers	  |    2379-2380     |  Etcd Client API / Server API          |

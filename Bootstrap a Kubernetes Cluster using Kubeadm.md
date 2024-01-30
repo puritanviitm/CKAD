@@ -118,7 +118,7 @@ Switch to root.
 sudo su
 ```
 ```
-hostnamectl set-hostname master
+hostnamectl set-hostname Master
 ```
 ```
 bash
@@ -144,7 +144,7 @@ Switch to root.
 sudo su
 ```
 ```
-hostnamectl set-hostname node2
+hostnamectl set-hostname Node2
 ```
 ```
 bash

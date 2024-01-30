@@ -176,12 +176,6 @@ mkdir -p $HOME/.kube
 cp -i /etc/kubernetes/admin.conf $HOME/.kube/config 
 chown $(id -u):$(id -g) $HOME/.kube/config
 ```
-OR
-
-Alternatively, if you are the root user, you can run:
-```
-export KUBECONFIG=/etc/kubernetes/admin.conf
-```
 
 View node information on the master. The nodes will not be ready.
 ```
@@ -233,6 +227,12 @@ Run curl on the localhost (container) to verify the http installation.
 ```
 curl localhost 
 exit
+```
+
+If you get the below `error` when running kubectl commands, execute the command given below.
+The connection to the server localhost:8080 was refused - did you specify the right host or port?
+```
+export KUBECONFIG=/etc/kubernetes/admin.conf
 ```
  
 

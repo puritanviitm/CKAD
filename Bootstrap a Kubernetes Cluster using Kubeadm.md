@@ -13,10 +13,39 @@ To begin, log in to AWS Console.
     | Master, Workers	  |    2379-2380     |  Etcd Client API / Server API          |
     | Master              |       6443	   	 |  Kubernetes API Server (Secure Port)   |
     | Master, Workers     |   6782-6784      |  Weave Net Server/Client API #CNI      |
-    | Master, Workers     |   10250–10255	 |  Kubelet Communication                 |
-    | Workers             |   30000–32767	 |  Reserved of NodePort Ips              |	   
+    | Master, Workers     |   10250-10255	 |  Kubelet Communication                 |
+    | Workers             |   30000-32767	 |  Reserved of NodePort Ips              |	   
 * Launch the Instance.
 
+Add the below code in user data.
+```
+#!/bin/bash
+sudo apt-get update
+sudo apt-get install apt-transport-https ca-certificates curl gnupg-agent software-properties-common -y
+sudo apt install docker.io -y
+sudo usermod -aG docker ubuntu
+
+sudo cat > /etc/docker/daemon.json <<EOF
+{
+  "exec-opts": ["native.cgroupdriver=systemd"],
+  "log-driver": "json-file",
+  "log-opts": {
+    "max-size": "1024m"
+  },
+  "storage-driver": "overlay2"
+}
+EOF
+
+sudo systemctl daemon-reload
+sudo systemctl restart docker
+
+sudo echo "Environment=cgroup-driver=systemd/cgroup-driver=cgroupfs" >> /etc/systemd/system/kubelet.service.d/10-kubeadm.conf
+
+sudo curl -s https://packages.cloud.google.com/apt/doc/apt-key.gpg | apt-key add -
+sudo echo 'deb http://apt.kubernetes.io/ kubernetes-xenial main' >> /etc/apt/sources.list.d/kubernetes.list
+sudo apt-get update
+sudo apt-get install -y kubelet=1.23.0-00 kubeadm=1.23.0-00 kubectl=1.23.0-00
+```
 
 ### Task-2: Setting up Machines
 * All steps in this task are to be performed on all the machines

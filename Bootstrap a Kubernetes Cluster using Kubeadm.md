@@ -236,6 +236,7 @@ If you get the below `error` when running kubectl commands, execute the command 
 export KUBECONFIG=/etc/kubernetes/admin.conf
 ```
 
+### DO NOT EXECUTE THIS COMMAND UNTIL DOUBLY SURE
 To remove the joins in your cluster
 ```
 kubeadm reset

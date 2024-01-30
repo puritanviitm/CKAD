@@ -114,7 +114,10 @@ Connect all VMs with putty.
 Switch to root.
 ```
 sudo su
-``` 
+```
+```
+bash
+```
 
 On control node(master)
 ```

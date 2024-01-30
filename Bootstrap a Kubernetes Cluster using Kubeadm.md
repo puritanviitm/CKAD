@@ -4,7 +4,7 @@ To begin, log in to AWS Console.
 
 ### Task 1: Launching Instances on AWS
 
-* 3 instances of `t2.medium` instance with OS version as `Ubuntu 22.04 LTS` in North Virginia (us-east-1) Region.
+* 3 instances of `t2.medium` instance with OS version as `Ubuntu 22.04 LTS` in your preferred region.
 * Instead of opening all ports you can open these ports internally.
     |      Nodes	      |    Port Number	 |         Use Case                       |
     |---------------------|------------------|----------------------------------------|

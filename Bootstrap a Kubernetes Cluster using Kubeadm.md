@@ -109,6 +109,13 @@ bash kubeadm-setup.sh
 
 Set the hostname to all three nodes as master, worker1, and worker2 in their respective terminals for easy understanding, by running the below command:
 
+Connect all VMs with putty.
+
+Switch to root.
+```
+sudo su
+``` 
+
 On control node(master)
 ```
 hostnamectl set-hostname master

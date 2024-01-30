@@ -50,12 +50,14 @@ sudo apt-get install -y kubelet=1.23.0-00 kubeadm=1.23.0-00 kubectl=1.23.0-00
 * Launch the Instance.
 
 ### Task-2: Setting up Machines
+* Task 2 can be skipped if the user data has been updated as shown in Task 1
 * All steps in this task are to be performed on all the machines
 * Connect all VMs with putty.
 Switch to root.
 ```
 sudo su
 ``` 
+
 Download the script to install and configure Kubeadm using the link on all the 3 instances.
 ```
 wget https://ckad.s3.ap-northeast-1.amazonaws.com/kubeadm-setup.sh

@@ -10,14 +10,14 @@ To begin, log in to AWS Console.
 * `Source type : Anywhere`
     |      Nodes	      |    Port Number	 |         Use Case                       |
     |---------------------|------------------|----------------------------------------|
-    | Master, Workers	  |    2379-2380     |  Etcd Client API / Server API          |
-    | Master              |       6443	   	 |  Kubernetes API Server (Secure Port)   |
-    | Master, Workers     |   6782-6784      |  Weave Net Server/Client API #CNI      |
-    | Master, Workers     |   10250-10255	 |  Kubelet Communication                 |
-    | Workers             |   30000-32767	 |  Reserved of NodePort Ips              |	   
-* Launch the Instance.
+    | Master, Workers	  |    `2379-2380`   |  Etcd Client API / Server API          |
+    | Master              |       `6443`  	 |  Kubernetes API Server (Secure Port)   |
+    | Master, Workers     |   `6782-6784`    |  Weave Net Server/Client API #CNI      |
+    | Master, Workers     |   `10250-10255`	 |  Kubelet Communication                 |
+    | Workers             |   `30000-32767`	 |  Reserved of NodePort Ips              |	   
 
-Add the below code in user data.
+
+* Add the below code in user data.
 ```
 #!/bin/bash
 sudo apt-get update
@@ -46,6 +46,8 @@ sudo echo 'deb http://apt.kubernetes.io/ kubernetes-xenial main' >> /etc/apt/sou
 sudo apt-get update
 sudo apt-get install -y kubelet=1.23.0-00 kubeadm=1.23.0-00 kubectl=1.23.0-00
 ```
+
+* Launch the Instance.
 
 ### Task-2: Setting up Machines
 * All steps in this task are to be performed on all the machines

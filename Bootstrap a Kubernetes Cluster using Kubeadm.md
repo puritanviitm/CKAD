@@ -230,9 +230,17 @@ exit
 ```
 
 If you get the below `error` when running kubectl commands, execute the command given below.
-The connection to the server localhost:8080 was refused - did you specify the right host or port?
+
+`The connection to the server localhost:8080 was refused - did you specify the right host or port?`
 ```
 export KUBECONFIG=/etc/kubernetes/admin.conf
 ```
+
+To remove the joins in your cluster
+```
+kubeadm reset
+```
+
+
  
 

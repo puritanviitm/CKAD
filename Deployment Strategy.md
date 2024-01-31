@@ -31,7 +31,7 @@ spec:
           protocol: TCP
 ```
 ```		 
-kubectl create -f web-blue.yaml
+kubectl apply -f web-blue.yaml
 ```
 ```
 kubectl get deploy
@@ -41,10 +41,10 @@ kubectl get pods
 ```
 
 Now create NodePort service to access application
-
-		 
+```		 
 vi svc-web-lb.yaml
-
+```
+```yaml
 apiVersion: v1
 kind: Service
 metadata:
@@ -60,17 +60,22 @@ spec:
   ports:
    - port: 80
      targetPort: 80
-	 
-kubectl create -f svc-web-lb.yaml
+```
+```	 
+kubectl apply -f svc-web-lb.yaml
+```
+```
 kubectl get svc
+```
 
-access you application
+Access you application
 
 
 to it canary deployment deploy following yaml file
-
+```
 vi web-green.yaml
-
+```
+```yaml
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -94,16 +99,22 @@ spec:
         ports:
         - containerPort: 80
           protocol: TCP
-
+```
+```
 kubectl create -f web-green.yaml
+```
+```
 kubectl get deployment
+```
+```
 kubectl get pods
-
+```
 access this application using same service that we create previously.
 
 some time will to blue deployment web page, some time green webpage
 
 If you delete the web-green deployment, load-balancer will start sending traffic only to the blue pods
 
-
+```
 kubectl describe svc web-app-svc-lb
+```

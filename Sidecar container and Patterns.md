@@ -75,5 +75,13 @@ kubectl apply -f init.yaml
 ```
 kubectl get pod
 ```
-
+```
+kubectl exec -it init-pod -c main-container
+```
+```
+cd /app && ls
+```
+```
+cat completed.txt
+```
 

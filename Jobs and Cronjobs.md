@@ -20,7 +20,7 @@ spec:
         args:
         - /bin/sh
         - -c
-        - echo HELLO WORLD !!!!!
+        - "echo HELLO WORLD !!!!!"
       restartPolicy: Never
 ```
 ```

@@ -77,6 +77,17 @@ spec:
             - "echo Hello World!"
           restartPolicy: OnFailure
 ```
+
+Open a new tab and run the below commands
+```
+kubectl get po
+```
+```
+kubectl get job
+```
+```
+kubectl get cronjobs 
+```
 ```
 kubectl apply -f cronjob.yaml
 ```

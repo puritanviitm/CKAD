@@ -30,10 +30,15 @@ spec:
         - containerPort: 80
           protocol: TCP
 ```
-		 
+```		 
 kubectl create -f web-blue.yaml
+```
+```
 kubectl get deploy
+```
+```
 kubectl get pods
+```
 
 Now create NodePort service to access application
 

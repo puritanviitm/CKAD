@@ -24,13 +24,13 @@ spec:
 
 ```
 ```	
-kubectl create -f sidecar.yaml
+kubectl apply -f sidecar.yaml
 ```
 ```
 kubectl get pod
 ```
 ```
-kubectl exec -it pod-sidecar -c sidecar-container -- bash
+kubectl exec -it sidecar-pod -c sidecar-container -- bash
 ```
 ```
 install curl

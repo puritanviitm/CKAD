@@ -1,7 +1,10 @@
-Lab 4 Canary Deployment on Kubernetes 
+## Deployment Strategy
 
+### Task 1: Canary Deployment in Kubernetes 
+```
 vi web-blue.yaml
-
+```
+```yaml
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -26,6 +29,7 @@ spec:
         ports:
         - containerPort: 80
           protocol: TCP
+```
 		 
 kubectl create -f web-blue.yaml
 kubectl get deploy

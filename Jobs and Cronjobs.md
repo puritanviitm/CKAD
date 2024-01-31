@@ -88,6 +88,7 @@ kubectl get job
 ```
 kubectl get cronjobs 
 ```
+On the Old Tab run the below commnds
 ```
 kubectl apply -f cronjob.yaml
 ```

@@ -38,7 +38,7 @@ curl 'http://localhost:80/'
 
 ### Task 2: Init container
 ```
-vi init.yaml
+vi initcontainer.yaml
 ```
 ```yaml
 apiVersion: v1

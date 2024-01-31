@@ -111,3 +111,7 @@ To check the number of executions of the cronjobs
 ```
 kubectl describe cronjobs
 ```
+To edit the running cronjob
+```
+kubectl edit cronjob <cronjob-name>
+```

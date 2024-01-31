@@ -78,7 +78,6 @@ spec:
           restartPolicy: OnFailure
 ```
 
-Open a new tab and run the below commands
 ```
 kubectl get po
 ```
@@ -88,7 +87,7 @@ kubectl get job
 ```
 kubectl get cronjobs 
 ```
-On the Old Tab run the below commnds
+
 ```
 kubectl apply -f cronjob.yaml
 ```

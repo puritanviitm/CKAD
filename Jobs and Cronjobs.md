@@ -78,7 +78,7 @@ spec:
           restartPolicy: OnFailure
 ```
 ```
-kubectl create -f cronjob.yaml
+kubectl apply -f cronjob.yaml
 ```
 ```
 kubectl get cronjobs.batch

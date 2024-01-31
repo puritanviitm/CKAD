@@ -15,7 +15,7 @@
 ## Table Of Contents
 * [Lab-1: Bootstrap a Kubernetes Cluster using Kubeadm](https://github.com/Mehar-Nafis/CKAD/blob/main/Bootstrap%20a%20Kubernetes%20Cluster%20using%20Kubeadm.md)
 * [Lab-2: Jobs and Cronjobs](https://github.com/Mehar-Nafis/CKAD/blob/main/Jobs%20and%20Cronjobs.md)
-* [Lab-3: Sidecar container and Patterns](https://github.com/Mehar-Nafis/CKAD/blob/main/Sidecar%20container%20and%20Patterns.md)
+* [Lab-3: Multi-containers](https://github.com/Mehar-Nafis/CKAD/blob/main/Sidecar%20container%20and%20Patterns.md)
 * [Lab-4: Canary Deployment on Kubernetes](https://github.com/Mehar-Nafis/CKAD/blob/main/Canary%20Deployment%20on%20Kubernetes.md)
 * [Lab-5: Liveness and Readiness probes](https://github.com/Mehar-Nafis/CKAD/blob/main/Liveness%20and%20Readiness%20probes.md)
 * [Lab-6: Metric Server](https://github.com/Mehar-Nafis/CKAD/blob/main/Metric%20Server.md)

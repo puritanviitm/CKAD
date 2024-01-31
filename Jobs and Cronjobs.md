@@ -54,7 +54,7 @@ kubectl delete -f job-pod.yaml
 
 Create a yaml called cron.yaml. Use the content given below to fill the file
 ```
-vi cron.yaml
+vi cronjob.yaml
 ```
 ```yaml
  

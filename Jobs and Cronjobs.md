@@ -98,5 +98,16 @@ kubectl get cronjobs.batch
 kubectl get pod
 ```
 ```
-kubectl logs <cronjob-pod-nmae>
+kubectl logs <cronjob-pod-name>
+```
+In new tabs , you can add a watch to job and pods by the below command
+```
+kubectl get po -w
+```
+```
+kubectl get jobs -w
+```
+To check the number of executions of the cronjobs
+```
+kubectl describe cronjobs
 ```

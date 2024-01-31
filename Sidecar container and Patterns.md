@@ -51,6 +51,9 @@ spec:
     image: nginx:latest
     ports:
     - containerPort: 80
+    volumeMounts:
+    - name: workdir
+      mountPath: /app
     # Main application container
 
   initContainers:

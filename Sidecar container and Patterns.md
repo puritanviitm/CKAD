@@ -8,7 +8,7 @@ vi sidecar.yaml
 apiVersion: v1
 kind: Pod
 metadata:
-  name: pod-sidecar
+  name: sidecar-pod
 spec:
   containers:
   - name: app-container

@@ -24,7 +24,7 @@ spec:
       restartPolicy: Never
 ```
 ```
-kubectl create -f job-pod.yaml
+kubectl apply -f job-pod.yaml
 ```
 ```
 kubectl get jobs

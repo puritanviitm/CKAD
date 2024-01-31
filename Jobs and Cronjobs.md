@@ -115,3 +115,4 @@ To edit the running cronjob
 ```
 kubectl edit cronjob <cronjob-name>
 ```
+To generate CronJob schedule expressions, you can also use web tools like https://crontab.guru/

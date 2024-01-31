@@ -18,10 +18,9 @@ spec:
     # Main application container
 
   - name: sidecar-container
-    image: busybox:latest
-    command: ['sh', '-c', 'while true; do echo "Sidecar Running"; sleep 10; done']
+    image: debian:latest
+    command: ['sh', '-c', 'apt update && apt install curl -y && while true; do echo "Sidecar Running"; sleep 10; done']
     # Sidecar container
-
 ```
 ```	
 kubectl apply -f sidecar.yaml

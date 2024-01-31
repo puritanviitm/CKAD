@@ -98,5 +98,5 @@ kubectl get cronjobs.batch
 kubectl get pod
 ```
 ```
-kubectl logs cronjob-hello-27991419-lz69c
+kubectl logs <cronjob-pod-nmae>
 ```

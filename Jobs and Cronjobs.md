@@ -42,6 +42,9 @@ Describe the job
 ```
 kubectl describe jobs jobs-hello
 ```
+```
+kubectl describe pod <pod-name>
+```
 Delete the job
 ```
 kubectl delete -f job-pod.yaml

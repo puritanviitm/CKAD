@@ -1,4 +1,4 @@
-## Sidecar container and Patterns
+## Multi-container
 
 ### Task 1: Sidecar container
 ```
@@ -34,4 +34,43 @@ kubectl exec -it sidecar-pod -c sidecar-container -- sh
 ``` 
 curl 'http://localhost:80/'
 ```
+
+
+### Task 2: Init container
+```
+vi init.yaml
+```
+```yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: init-pod
+spec:
+  containers:
+  - name: main-container
+    image: nginx:latest
+    ports:
+    - containerPort: 80
+    # Main application container
+
+  initContainers:
+  - name: init-container
+    image: busybox:latest
+    command: ['sh', '-c', 'echo "Init Container Completed" > /work-dir/completed.txt']
+    volumeMounts:
+    - name: workdir
+      mountPath: /work-dir
+    # Init container
+  volumes:
+  - name: workdir
+    emptyDir: {}
+
+```
+```	
+kubectl apply -f init.yaml
+```
+```
+kubectl get pod
+```
+
 

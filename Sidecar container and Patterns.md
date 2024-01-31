@@ -11,23 +11,17 @@ metadata:
   name: sidecar-pod
 spec:
   containers:
-  - name: app-container
-    image: ubuntu:latest
-    command: ["/bin/sh"]
-    args: ["-c","while true; do date >> /var/log/app.txt; sleep 5; done"]
-    volumeMounts:
-    - name: share-logs
-      mountPath: /var/log/
-  - name: sidecar-container
+  - name: main-container
     image: nginx:latest
     ports:
     - containerPort: 80
-    volumeMounts:
-    - name: share-logs
-      mountPath: /usr/share/nginx/html
-  volumes:
-  - name: share-logs
-    emptyDir: {}
+    # Main application container
+
+  - name: sidecar-container
+    image: busybox:latest
+    command: ['sh', '-c', 'while true; do echo "Sidecar Running"; sleep 10; done']
+    # Sidecar container
+
 ```
 ```	
 kubectl create -f sidecar.yaml

@@ -34,3 +34,4 @@ kubectl exec -it sidecar-pod -c sidecar-container -- sh
 ``` 
 curl 'http://localhost:80/'
 ```
+

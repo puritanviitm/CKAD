@@ -74,7 +74,7 @@ spec:
             args:
             - /bin/sh
             - -c
-            - echo Hello World!
+            - "echo Hello World!"
           restartPolicy: OnFailure
 ```
 ```

@@ -30,7 +30,7 @@ kubectl apply -f sidecar.yaml
 kubectl get pod
 ```
 ```
-kubectl exec -it sidecar-pod -c sidecar-container -- bash
+kubectl exec -it sidecar-pod -c sidecar-container -- sh
 ```
 ```
 install curl

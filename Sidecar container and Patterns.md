@@ -31,12 +31,6 @@ kubectl get pod
 ```
 kubectl exec -it sidecar-pod -c sidecar-container -- sh
 ```
-```
-install curl
-```
-```
-apt update && apt install curl -y
-```
 ``` 
-curl 'http://localhost:80/app.txt'
+curl 'http://localhost:80/'
 ```

@@ -103,7 +103,33 @@ kubectl autoscale deployment dep1 --min 4 --max 12 --cpu-percent 70 --name hpa-d
 ```
 kubectl get hpa
 ```
+To upgrade/migrate the version of image, either edit the yaml file, or edit the deployment or execute the below command
+Add a watch on the pods in a new tab
+```
+kubectl get po -w
+```
+Set a new image for the deployment
+```
+kubectl set image deploy dep1 nginx=nginx:latest --record
+```
+Check how the pods are getting deleted and recreated. 
 
+Cross check if the image has been updated by executing the below command
+```
+kubectl describe deployments.apps dep1
+```
+To check the rollout history. The below command shows history of 10 versions.
+```
+kubectl rollout history deploy dep1
+```
+To Rollback
+```
+kubectl rollout undo deploy dep1 --to-revision 1
+```
+To check the history of a particular revision
+```
+kubectl rollout history deploy dep1 --revision=<revision-number>
+```
 
 
 ### Task 2: Blue/Green Deployment in Kubernetes 

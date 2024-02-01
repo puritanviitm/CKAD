@@ -98,7 +98,7 @@ For Autoscaling
 kubectl get hpa
 ```
 ```
-kubectl autoscale deploy dep1 --min 4 --max 15 --cpu-percent 70
+kubectl autoscale deployment dep1 --min 4 --max 12 --cpu-percent 70 --name hpa-dep1
 ```
 ```
 kubectl get hpa

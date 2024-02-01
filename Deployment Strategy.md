@@ -14,7 +14,7 @@ metadata:
     app: dep1
   name: dep1
 spec:
-  replicas: 10
+  replicas: 12
   selector:
     matchLabels:
       app: dep1

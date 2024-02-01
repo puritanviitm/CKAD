@@ -47,7 +47,7 @@ Cross check if the image has been updated by executing the below command
 kubectl describe deployments.apps dep1
 ```
 
-### Task 2: Canary Deployment in Kubernetes 
+### Task 2: Blue/Green Deployment in Kubernetes 
 ```
 vi web-blue.yaml
 ```

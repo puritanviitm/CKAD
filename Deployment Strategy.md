@@ -75,7 +75,7 @@ spec:
         ports:
         - containerPort: 80
 ```
-```
+
 Note the strategy.Since nothing is given the default strategy comes into place which is the rolling update.
 
 Apply the yaml file

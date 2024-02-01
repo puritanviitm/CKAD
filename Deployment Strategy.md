@@ -59,7 +59,7 @@ metadata:
     app: dep1
   name: dep1
 spec:
-  replicas: 3
+  replicas: 10
   selector:
     matchLabels:
       app: dep1
@@ -83,8 +83,27 @@ Apply the yaml file
 kubectl apply -f dep.yaml
 ```
 ```
-kubectl get deployments.apps, po
+kubectl get deployments.apps,pod,rs
 ```
+Note the Statgey and events by describing the deployment
+```
+kubectl describe deployments.apps dep1
+```
+To increase/decrease the number of replicas manually, either edit the yaml file, or edit the running deployment or execute the below command
+```
+kubectl scale deployment dep1 --replicas 12
+```
+For Autoscaling
+```
+kubectl get hpa
+```
+```
+kubectl autoscale deploy dep1 --min 4 --max 15 --cpu-percent 70
+```
+```
+kubectl get hpa
+```
+
 
 
 ### Task 2: Blue/Green Deployment in Kubernetes 

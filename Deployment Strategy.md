@@ -96,14 +96,13 @@ metadata:
   name: web-app-svc
 spec:
   ports:
-  - port: 80
+  - port: 80        # Service port(internal)
     protocol: TCP
-    targetPort: 80
+    targetPort: 80  # Container port
+    nodePort: 32123 # Range from 30000 to 32767 . This is the external port number
   selector:
-    type: web-app
+    type: web-blue
   type: NodePort
-  ports:
-   - port: 80
      targetPort: 80
 ```
 ```	 

@@ -14,7 +14,7 @@ metadata:
     app: dep1
   name: dep1
 spec:
-  replicas: 12
+  replicas: 3
   selector:
     matchLabels:
       app: dep1
@@ -46,7 +46,7 @@ kubectl describe deployments.apps dep1
 ```
 To increase/decrease the number of replicas manually, either edit the yaml file, or edit the running deployment or execute the below command
 ```
-kubectl scale deployment dep1 --replicas 12
+kubectl scale deployment dep1 --replicas 5
 ```
 For Autoscaling
 ```

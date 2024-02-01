@@ -87,13 +87,13 @@ kubectl get pods
 
 Now create NodePort service to access application
 ```		 
-vi svc-web-lb.yaml
+vi svc-web.yaml
 ```
 ```yaml
 apiVersion: v1
 kind: Service
 metadata:
-  name: web-app-svc-lb
+  name: web-app-svc
 spec:
   ports:
   - port: 80

@@ -101,9 +101,9 @@ spec:
     targetPort: 80  # Container port
     nodePort: 32123 # Range from 30000 to 32767 . This is the external port number
   selector:
-    type: web-blue
+    app: web-blue
   type: NodePort
-     targetPort: 80
+
 ```
 ```	 
 kubectl apply -f svc-web.yaml

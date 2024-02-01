@@ -1,5 +1,47 @@
 ## Deployment Strategy
 
+### Task 1: recreate Strategy in Kubernetes 
+```
+vi recreate.yaml
+```
+```yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: dep1
+  name: dep1
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: dep1
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        app: dep1
+    spec:
+      containers:
+      - image: nginx
+        name: nginx
+        ports:
+        - containerPort: 80
+```
+```
+kubectl apply -f recreate.yaml
+```
+Add a watch on the pods in a new tab
+```
+kubectl get po -w
+```
+Set a new image for the deployment
+```
+kubectl set image deploy dep1 nginx-nginx:latest
+```
+Check how the pods are getting deleted and recreated. 
+
 ### Task 1: Canary Deployment in Kubernetes 
 ```
 vi web-blue.yaml

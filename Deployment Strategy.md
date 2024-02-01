@@ -173,5 +173,29 @@ Check the endpoints
 ```
 kubectl get ep svc svc-web
 ```
-Access you application
+Access you application on the port 32123
+
+### Task 3: Canary Deployment in Kubernetes 
+
+Service and deployment should have a common label.
+Add `type: web-app` to yaml file of both the deployments and apply again.
+```
+kubectl apply -f web-green.yaml
+```
+```
+kubectl apply -f web-blue.yaml
+```
+In the yaml file of Service change the Selector to 'type: web-app` and apply.
+
+Check the endpoints of the service. It should show all the pods of both the deployments.
+```
+kubectl get ep svc svc-web
+```
+```
+kubectl get po -o wide
+```
+Access the application on port 32123. Sometime it will show Blue, other time it will show green.
+
+
+
 

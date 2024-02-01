@@ -1,52 +1,7 @@
 ## Deployment Strategy
 
-### Task 1: Recreate Strategy in Kubernetes 
-```
-vi recreate.yaml
-```
-```yaml
-apiVersion: apps/v1
-kind: Deployment
-metadata:
-  labels:
-    app: dep1
-  name: dep1
-spec:
-  replicas: 2
-  selector:
-    matchLabels:
-      app: dep1
-  strategy:
-    type: Recreate
-  template:
-    metadata:
-      labels:
-        app: dep1
-    spec:
-      containers:
-      - image: nginx
-        name: nginx
-        ports:
-        - containerPort: 80
-```
-```
-kubectl apply -f recreate.yaml
-```
-Add a watch on the pods in a new tab
-```
-kubectl get po -w
-```
-Set a new image for the deployment
-```
-kubectl set image deploy dep1 nginx=nginx:latest --record
-```
-Check how the pods are getting deleted and recreated. 
 
-Cross check if the image has been updated by executing the below command
-```
-kubectl describe deployments.apps dep1
-```
-### Task 2: Rolling Update in Kubernetes 
+### Task 1: Rolling Update in Kubernetes 
 
 ```
 vi dep.yaml 
@@ -131,8 +86,54 @@ To check the history of a particular revision
 kubectl rollout history deploy dep1 --revision=<revision-number>
 ```
 
+### Task 2: Recreate Strategy in Kubernetes 
+```
+vi recreate.yaml
+```
+```yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: dep1
+  name: dep1
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: dep1
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        app: dep1
+    spec:
+      containers:
+      - image: nginx
+        name: nginx
+        ports:
+        - containerPort: 80
+```
+```
+kubectl apply -f recreate.yaml
+```
+Add a watch on the pods in a new tab
+```
+kubectl get po -w
+```
+Set a new image for the deployment
+```
+kubectl set image deploy dep1 nginx=nginx:latest --record
+```
+Check how the pods are getting deleted and recreated. 
 
-### Task 2: Blue/Green Deployment in Kubernetes 
+Cross check if the image has been updated by executing the below command
+```
+kubectl describe deployments.apps dep1
+```
+
+### Task 3: Blue/Green Deployment in Kubernetes 
 ```
 vi web-blue.yaml
 ```
@@ -260,7 +261,7 @@ kubectl get ep svc svc-web
 ```
 Access you application on the port 32123
 
-### Task 3: Canary Deployment in Kubernetes 
+### Task 4: Canary Deployment in Kubernetes 
 
 Service and deployment should have a common label.
 Add `type: web-app` to yaml file of both the deployments and apply again.

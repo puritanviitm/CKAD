@@ -61,7 +61,6 @@ spec:
   selector:
     matchLabels:
       app: web-blue
-      type: web-app
   strategy:
     type: RollingUpdate
   template:

@@ -122,7 +122,7 @@ kubectl describe svc svc-web
 Access you application
 
 
-to it canary deployment deploy following yaml file
+Create another deployment (Green)
 ```
 vi web-green.yaml
 ```
@@ -142,7 +142,6 @@ spec:
     metadata:
       labels:
         app: web-green
-        type: web-app
     spec:
       containers:
       - image: mandarct/web-green:v1
@@ -152,7 +151,7 @@ spec:
           protocol: TCP
 ```
 ```
-kubectl create -f web-green.yaml
+kubectl apply -f web-green.yaml
 ```
 ```
 kubectl get deployment

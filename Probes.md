@@ -49,11 +49,11 @@ kubectl get pods
 You can see the pod is getting restarted
 
  
-Task 2: Readiness probe
------------------------------------------- 
-
+### Task 2: Readiness probe
+```
 vi readiness.yaml
-
+```
+```yaml
 apiVersion: v1
 kind: Pod
 metadata:
@@ -75,22 +75,31 @@ spec:
         - /readiness
       initialDelaySeconds: 5
       periodSeconds: 5
-	  
+```
+```	  
 kubectl create -f readiness.yaml
+```
+```
 kubectl get pods
+```
 
-
-login inside pod and delete folloing file 
-
+Login inside pod and delete the file 
+```
 kubectl exec -it readiness-pod bash 
-# rm -f /readiness
-# exit
+```
+```
+rm -f /readiness
+```
+```
+exit
+```
 
-
-View the Pod events and see that readiness probe has failed
+View the Pod events and see that the readiness probe has failed
+```
 kubectl describe pods readiness-pod
-
-now describe service
+```
+Now describe service
+```
 kubectl describe svc readiness-svc
-
+```
 End point is gone

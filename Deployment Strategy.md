@@ -1,6 +1,6 @@
 ## Deployment Strategy
 
-### Task 1: recreate Strategy in Kubernetes 
+### Task 1: Recreate Strategy in Kubernetes 
 ```
 vi recreate.yaml
 ```

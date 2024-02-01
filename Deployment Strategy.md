@@ -46,6 +46,46 @@ Cross check if the image has been updated by executing the below command
 ```
 kubectl describe deployments.apps dep1
 ```
+### Task 2: Rolling Update in Kubernetes 
+
+```
+vi dep.yaml 
+```
+```yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: dep1
+  name: dep1
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: dep1
+  strategy: {}
+  template:
+    metadata:
+      labels:
+        app: dep1
+    spec:
+      containers:
+      - image: nginx
+        name: nginx
+        ports:
+        - containerPort: 80
+```
+```
+Note the strategy.Since nothing is given the default strategy comes into place which is the rolling update.
+
+Apply the yaml file
+```
+kubectl apply -f dep.yaml
+```
+```
+kubectl get deployments.apps, po
+```
+
 
 ### Task 2: Blue/Green Deployment in Kubernetes 
 ```

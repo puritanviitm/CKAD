@@ -67,7 +67,6 @@ spec:
     metadata:
       labels:
         app: web-blue
-        type: web-app
     spec:
       containers:
       - image: mandarct/web-blue:v1

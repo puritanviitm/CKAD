@@ -2,7 +2,7 @@
 
 ### Task 1: Liveness probes
 ```	  
-vi liveness-pod.yaml
+vi liveness.yaml
 ```
 ```yaml
 apiVersion: v1
@@ -31,7 +31,7 @@ spec:
 kubectl get pods	  
 ```
 ```
-kubectl describe pod liveness-exec
+kubectl describe pod liveness-pod
 ``` 
 Now login to the container and delete the file
 ```

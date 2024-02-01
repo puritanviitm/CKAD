@@ -106,7 +106,7 @@ spec:
      targetPort: 80
 ```
 ```	 
-kubectl apply -f svc-web-lb.yaml
+kubectl apply -f svc-web.yaml
 ```
 ```
 kubectl get svc

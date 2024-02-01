@@ -42,6 +42,11 @@ kubectl set image deploy dep1 nginx=nginx:latest --record
 ```
 Check how the pods are getting deleted and recreated. 
 
+Cross check if the image has been updated by executing the below command
+```
+kubectl describe deployments.apps dep1
+```
+
 ### Task 1: Canary Deployment in Kubernetes 
 ```
 vi web-blue.yaml

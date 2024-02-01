@@ -175,6 +175,3 @@ kubectl get ep svc svc-web
 ```
 Access you application
 
-If you delete the web-green deployment, the load-balancer will start sending traffic only to the blue pods
-
-

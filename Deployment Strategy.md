@@ -111,16 +111,14 @@ kubectl apply -f svc-web.yaml
 ```
 kubectl get svc
 ```
-Check the end-points
 ```
 kubectl get po -o wide
 ```
+Check the endpoints
 ```
-kubectl describe svc svc-web
+kubectl get ep svc svc-web
 ```
-
 Access you application
-
 
 Create another deployment (Green)
 ```
@@ -159,12 +157,24 @@ kubectl get deployment
 ```
 kubectl get pods
 ```
-access this application using same service that we create previously.
+Access this application using same service that we created previously, by changing the selector in the Service yaml file.
 
-some time will to blue deployment web page, some time green webpage
-
-If you delete the web-green deployment, load-balancer will start sending traffic only to the blue pods
-
+Replace Selector `web-blue` by `web-green`
+```	 
+kubectl apply -f svc-web.yaml
 ```
-kubectl describe svc web-app-svc-lb
 ```
+kubectl get svc
+```
+```
+kubectl get po -o wide
+```
+Check the endpoints
+```
+kubectl get ep svc svc-web
+```
+Access you application
+
+If you delete the web-green deployment, the load-balancer will start sending traffic only to the blue pods
+
+

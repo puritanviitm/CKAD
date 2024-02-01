@@ -93,7 +93,7 @@ vi svc-web.yaml
 apiVersion: v1
 kind: Service
 metadata:
-  name: web-app-svc
+  name: svc-web
 spec:
   ports:
   - port: 80        # Service port(internal)
@@ -110,6 +110,13 @@ kubectl apply -f svc-web.yaml
 ```
 ```
 kubectl get svc
+```
+Check the end-points
+```
+kubectl get po -o wide
+```
+```
+kubectl describe svc svc-web
 ```
 
 Access you application

@@ -280,6 +280,8 @@ kubectl get secret
 ```
 kubectl describe secret secret-1
 ```
+You can inject the secret in all the three ways as above.
+Injecting all values
 ```
 vi sc-pod.yaml
 ```
@@ -297,9 +299,10 @@ spec:
     envFrom:
     - secretRef:
         name: secret-1
- ```
- ```
-  vi sc-pod.yaml
+```
+OR injecting particular value
+```
+vi sc-pod.yaml
 ```
 ```
 apiVersion: v1
@@ -318,7 +321,8 @@ spec:
         secretKeyRef:
           name: secret-1
           key: db_pwd
- ```
+```
+Or Injecting as Volume mount
 ```
  vi pod.yaml
 ```
@@ -342,4 +346,22 @@ spec:
       mountPath: /app
     ports:
     - containerPort: 80
+```
+```
+kubectl apply -f pod.yaml
+```
+```
+kubectl get po
+```
+```
+kubectl exec -it sc-pod -- sh
+```
+```
+echo $db_user
+```
+```
+echo $db_pwd
+```
+```
+echo env | grep db_
 ```

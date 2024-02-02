@@ -128,3 +128,13 @@ Now describe service
 kubectl describe svc readiness-svc
 ```
 End point is gone
+
+Replace the pod
+```
+kubectl replace -f readiness.yaml --force
+```
+Check for endpoints
+```
+kubectl describe svc readiness-svc
+```
+Endpoints are back

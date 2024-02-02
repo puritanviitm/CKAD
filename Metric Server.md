@@ -32,13 +32,13 @@ Sort the output on CPU Utilization
 ```
 kubectl top pod -A --sort-by cpu
 ```
-To check all the options
-```
-kubectl top pod --help
-```
 Sort the output on Memory Utilization
 ```
 kubectl top pod -A --sort-by memory
+```
+To check all the options
+```
+kubectl top pod --help
 ```
 
 

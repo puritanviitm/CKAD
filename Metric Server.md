@@ -28,8 +28,13 @@ To check the resource utilization by pods
 ```
 kubectl top pod
 ```
+Sort the output on CPU Utilization
 ```
-kubectl top pod -l name=overloaded-cpu
+kubectl top pod -A --sort-by cpu
+```
+Sort the output on Memory Utilization
+```
+kubectl top pod -A --sort-by memory
 ```
 
 

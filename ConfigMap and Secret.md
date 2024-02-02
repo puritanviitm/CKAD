@@ -264,13 +264,13 @@ Enter the pod and check if the variable has been passed correctly or not
 kubectl exec -it web-pod -- sh
 ```
 ```
-echo $token
+cd /app
 ```
 ```
-env | grep token
+cat token
 ```
 
-### Task 5 : Secret
+### Task 6 : Secret
 ```
 kubectl create secret generic secret-1 --from-literal=db_user=admin --from-literal=db_pwd=123
 ```

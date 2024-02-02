@@ -364,5 +364,5 @@ echo $db_user
 echo $db_pwd
 ```
 ```
-echo env | grep db_
+env | grep db_
 ```

@@ -153,17 +153,29 @@ echo $db_password
 env | grep db_
 ```
 
-### Task 4 : 
+### Task 4 : Injecting ConfigMap as volume mount
+
+Create a ConfigMap
+```
+kubectl create cm cm-1 --from-literal=db_user=admin --from-literal=db_pwd=1234
+```
+```
+kubectl get cm
+```
+```
+kubectl describe cm cm-1
+```
+Inject as volume mount
 ```
 vi pod.yaml
 ```
-```
+```yaml
 apiVersion: v1
 kind: Pod
 metadata:
   labels:
     app: web
-  name: web-pod3
+  name: web-pod
 spec:
   volumes:
   - name: cm-volume
@@ -177,6 +189,7 @@ spec:
       mountPath: /app
     ports:
     - containerPort: 80
+
 ```
 
 kubectl create secret generic secret-1 --from-literal=db_user=admin --from-literal=db_pwd=123

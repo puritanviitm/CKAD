@@ -43,7 +43,7 @@ echo $db_pwd
 env | grep db_
 ```
 
-### Task 2: Inject all variables from ConfigMaps(FromLiteral) into POD.
+### Task 2: Inject `ALL` variables from ConfigMaps(FromLiteral) into POD.
 Create a ConfigMap
 ```
 kubectl create cm cm-1 --from-literal=db_user=admin --from-literal=db_pwd=1234
@@ -95,7 +95,7 @@ echo $db_pwd
 env | grep db_
 ```
 
-### Task 3: Inject particular variables from ConfigMaps(FromLiteral) into POD.
+### Task 3: Inject `PARTICULAR` variables from ConfigMaps(FromLiteral) into POD.
 
 ```
 vi env.yaml

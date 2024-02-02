@@ -1,6 +1,6 @@
 ## ConfigMap & Secrets
 
-### Task 1: Traditional Method
+### Task 1: Directly inject variables-Traditional Method
 ```
 vi env.yaml
 ```
@@ -43,7 +43,8 @@ echo $db_pwd
 env | grep db_
 ```
 
-### Task 2: ConfigMaps - FromLiteral
+### Task 2: Inject varialbes using ConfigMaps - FromLiteral
+Create a ConfigMap
 ```
 kubectl create cm cm-1 --from-literal=db_user=admin --from-literal=db_pwd=1234
 ```

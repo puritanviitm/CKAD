@@ -36,6 +36,10 @@ Sort the output on Memory Utilization
 ```
 kubectl top pod -A --sort-by memory
 ```
+To check the total utilization by all pods
+```
+kubectl top pod --sum=true -A
+```
 To check all the options
 ```
 kubectl top pod --help

@@ -31,6 +31,9 @@ spec:
       initialDelaySeconds: 5
       periodSeconds: 5
 ```
+```
+kubectl apply -f liveness.yaml
+```
 ```	  
 kubectl get pods	  
 ```

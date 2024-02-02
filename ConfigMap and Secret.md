@@ -341,6 +341,7 @@ spec:
     - secretRef:
         name: mysql-credentials
 ```
+```
 kubectl apply -f sc-pod.yaml
 ```
 ```

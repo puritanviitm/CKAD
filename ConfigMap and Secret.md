@@ -188,12 +188,9 @@ spec:
     name: ctr-1
     ports:
     - containerPort: 80
-    env:
-    - name: db_password
-      valueFrom:
-        configMapKeyRef:
-          name: cm-1
-          key: db_pwd
+    envFrom:
+    - configMapRef:
+        name: cm-1
 ```
 ```
 kubectl apply -f env.yaml

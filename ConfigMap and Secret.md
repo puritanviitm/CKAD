@@ -1,6 +1,6 @@
-## ConfigMap and Secrets
+## ConfigMap & Secrets
 
-### Task 1: Config Map
+### Task 1: Traditional Method
 ```
 vi env.yaml
 ```
@@ -42,11 +42,22 @@ echo $db_pwd
 ```
 env | grep db_
 ```
-kubectl create cm cm-1 --from-literal=db_user=admin --from-literal=db_pwd=1234
-kubectl get cm
-kubectl describe cm cm-1
 
-----------------------------------------------------------------------
+### Task 2: ConfigMaps - FromLiteral
+```
+kubectl create cm cm-1 --from-literal=db_user=admin --from-literal=db_pwd=1234
+```
+```
+kubectl get cm
+```
+```
+kubectl describe cm cm-1
+```
+Inject the ConfigMap into the Pod Yaml File
+```
+vi env.yaml
+```
+```yaml
 apiVersion: v1
 kind: Pod
 metadata:
@@ -62,7 +73,29 @@ spec:
     envFrom:
     - configMapRef:
         name: cm-1
-----------------------------------------------------------------------
+```
+```
+kubectl apply -f env.yaml
+```
+```
+kubectl describe pod env-pod
+```
+Enter the pod and check if the variable has been passed correctly or not
+```
+kubectl exec -it env-pod -- sh
+```
+```
+echo $db_user
+```
+```
+echo $db_pwd
+```
+```
+env | grep db_
+```
+
+
+```
 vi pod.yaml
 
 apiVersion: v1

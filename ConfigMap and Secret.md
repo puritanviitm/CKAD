@@ -349,7 +349,7 @@ spec:
     - containerPort: 80
 ```
 ```
-kubectl apply -f pod.yaml
+kubectl apply -f sc-pod.yaml
 ```
 ```
 kubectl get po

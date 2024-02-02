@@ -1,6 +1,8 @@
 ## Probes
 
 ### Task 1: Liveness probes
+
+Many applications running for long periods of time eventually transition to broken states, and cannot recover except by being restarted. Kubernetes provides liveness probes to detect and remedy such situations.
 ```	  
 vi liveness.yaml
 ```

@@ -35,6 +35,7 @@ Add a live watch on the pods in another tab
 ```
 kubectl get pod -w
 ```
+Toggle to the first tab and execute the below commands
 ```
 kubectl apply -f liveness.yaml
 ```

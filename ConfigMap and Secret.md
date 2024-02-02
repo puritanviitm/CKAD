@@ -1,6 +1,6 @@
 ## ConfigMap & Secrets
 
-### Task 1: Directly inject variables-Traditional Method
+### Task 1: Directly inject variables - Traditional Method
 ```
 vi env.yaml
 ```
@@ -96,7 +96,17 @@ env | grep db_
 ```
 
 ### Task 3: Inject `PARTICULAR` variables from ConfigMaps(FromLiteral) into POD.
-
+Create a ConfigMap
+```
+kubectl create cm cm-1 --from-literal=db_user=admin --from-literal=db_pwd=1234
+```
+```
+kubectl get cm
+```
+```
+kubectl describe cm cm-1
+```
+Inject particular variable from the ConfigMap into the Pod Yaml File
 ```
 vi env.yaml
 ```

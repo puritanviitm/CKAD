@@ -53,6 +53,9 @@ exit
 ```
 kubectl get pods
 ```
+```
+kubectl describe pod liveness-pod
+```
 You can see the pod is getting restarted
 
  

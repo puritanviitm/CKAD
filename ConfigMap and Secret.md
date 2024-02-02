@@ -191,13 +191,20 @@ spec:
     - containerPort: 80
 
 ```
-
+### Task 5 : Secret
+```
 kubectl create secret generic secret-1 --from-literal=db_user=admin --from-literal=db_pwd=123
+```
+```
 kubectl get secret
+```
+```
 kubectl describe secret secret-1
-----------------------------------------------------------------------------------
+```
+```
 vi sc-pod.yaml
-
+```
+```yaml
 apiVersion: v1
 kind: Pod
 metadata:
@@ -211,10 +218,11 @@ spec:
     envFrom:
     - secretRef:
         name: secret-1
- ---------------------------------------------------------------------------------
-
+ ```
+ ```
   vi sc-pod.yaml
-
+```
+```
 apiVersion: v1
 kind: Pod
 metadata:
@@ -231,9 +239,11 @@ spec:
         secretKeyRef:
           name: secret-1
           key: db_pwd
- -------------------------------------------------------------------------------------
+ ```
+```
  vi pod.yaml
-
+```
+```yaml
 apiVersion: v1
 kind: Pod
 metadata:
@@ -253,3 +263,4 @@ spec:
       mountPath: /app
     ports:
     - containerPort: 80
+```

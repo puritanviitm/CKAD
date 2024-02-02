@@ -31,6 +31,10 @@ spec:
       initialDelaySeconds: 5
       periodSeconds: 60
 ```
+Add a live watch on the pods in another tab
+```
+kubectl get pod -w
+```
 ```
 kubectl apply -f liveness.yaml
 ```

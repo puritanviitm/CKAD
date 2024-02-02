@@ -29,7 +29,7 @@ spec:
         - cat
         - /liveness
       initialDelaySeconds: 5
-      periodSeconds: 60
+      periodSeconds: 5
 ```
 Add a live watch on the pods in another tab
 ```

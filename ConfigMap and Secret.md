@@ -293,11 +293,20 @@ metadata:
 type: Opaque
 data:
   ##all below values are base64 encoded
+
+  ## To encode and print
+  ## echo -n '<value-to-be-encoded>' | base64
+
+  ## To decode
+  ## echo '<value-to-be-decoded>' | base64 -d
+
   ##rootpw is root
-  ##user is user
-  ##password is mypwd
   rootpw: cm9vdAo=
+
+  ##user is user
   user: dXNlcgo=
+
+  ##password is mypwd
   password: bXlwd2QK
 ```
 ```

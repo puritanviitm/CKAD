@@ -152,9 +152,12 @@ echo $db_password
 ```
 env | grep db_
 ```
-----------------------------------------------------------------------
-vi pod.yaml
 
+### Task 4 : 
+```
+vi pod.yaml
+```
+```
 apiVersion: v1
 kind: Pod
 metadata:
@@ -174,8 +177,7 @@ spec:
       mountPath: /app
     ports:
     - containerPort: 80
------------------------------------------------------------------
-
+```
 
 kubectl create secret generic secret-1 --from-literal=db_user=admin --from-literal=db_pwd=123
 kubectl get secret

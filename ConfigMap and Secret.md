@@ -1,11 +1,16 @@
-vi env-pod.yaml
+## ConfigMap and Secrets
 
+### Task 1: Config Map
+```
+vi env.yaml
+```
+```yaml
 apiVersion: v1
 kind: Pod
 metadata:
   labels:
     app: ws
-  name: pod-1
+  name: env-pod
 spec:
   containers:
   - image: nginx
@@ -17,7 +22,25 @@ spec:
       value: admin
     - name: db_pwd
       value: "1234"
-----------------------------------------------------------------------
+```
+```
+kubectl apply -f env.yaml
+```
+```
+kubectl describe pod env-pod
+```
+Enter the pod and check if the variable has been passed correctly or not
+```
+kubectl exec -it env-pod -- sh
+```
+```
+echo $db_user
+```
+```
+echo $db_pwd
+```
+env | grep db_
+```
 kubectl create cm cm-1 --from-literal=db_user=admin --from-literal=db_pwd=1234
 kubectl get cm
 kubectl describe cm cm-1

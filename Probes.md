@@ -50,7 +50,7 @@ Now login to the container and delete the file
 kubectl exec -it liveness-pod sh 
 ```
 ```
-rm -f /liveness
+rm -f liveness
 ```
 ```
 exit

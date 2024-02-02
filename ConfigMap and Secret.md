@@ -39,6 +39,7 @@ echo $db_user
 ```
 echo $db_pwd
 ```
+```
 env | grep db_
 ```
 kubectl create cm cm-1 --from-literal=db_user=admin --from-literal=db_pwd=1234

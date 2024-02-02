@@ -79,7 +79,7 @@ spec:
 kubectl apply -f env.yaml
 ```
 ```
-kubectl describe pod env-pod
+kubectl describe pod web-pod
 ```
 Enter the pod and check if the variable has been passed correctly or not
 ```

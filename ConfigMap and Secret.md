@@ -158,8 +158,7 @@ Create a file
 vi token
 ```
 ```
-This is CKAD Training.
-We are practicing Injecting variables from ConfigMaps(FromFile) into POD.
+This is CKAD Training. We are practicing Injecting variables from ConfigMaps(FromFile) into POD.
 ```
 Create a ConfigMap
 ```
@@ -216,8 +215,7 @@ Create a file
 vi token
 ```
 ```
-This is CKAD Training.
-We are practicing Injecting variables from ConfigMaps(FromFile) into POD.
+This is CKAD Training. We are practicing Injecting variables from ConfigMaps(FromFile) into POD.
 ```
 Create a ConfigMap
 ```

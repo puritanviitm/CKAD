@@ -56,7 +56,7 @@ kubectl get pods
 ```
 kubectl describe pod liveness-pod
 ```
-You can see the pod is getting restarted
+You can see the pod restarted
 
  
 ### Task 2: Readiness probe

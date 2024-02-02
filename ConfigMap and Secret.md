@@ -43,7 +43,7 @@ echo $db_pwd
 env | grep db_
 ```
 
-### Task 2: Inject varialbes using ConfigMaps - FromLiteral
+### Task 2: Inject all variables from ConfigMaps(FromLiteral) into POD.
 Create a ConfigMap
 ```
 kubectl create cm cm-1 --from-literal=db_user=admin --from-literal=db_pwd=1234
@@ -95,16 +95,18 @@ echo $db_pwd
 env | grep db_
 ```
 
+### Task 3: Inject particular variables from ConfigMaps(FromLiteral) into POD.
 
 ```
-vi pod.yaml
-
+vi env.yaml
+```
+```yaml
 apiVersion: v1
 kind: Pod
 metadata:
   labels:
     app: web
-  name: web-pod2
+  name: web-pod
 spec:
   containers:
   - image: httpd
@@ -117,6 +119,26 @@ spec:
         configMapKeyRef:
           name: cm-1
           key: db_pwd
+```
+```
+kubectl apply -f env.yaml
+```
+```
+kubectl describe pod web-pod
+```
+Enter the pod and check if the variable has been passed correctly or not
+```
+kubectl exec -it web-pod -- sh
+```
+```
+echo $db_user
+```
+```
+echo $db_pwd
+```
+```
+env | grep db_
+```
 ----------------------------------------------------------------------
 vi pod.yaml
 

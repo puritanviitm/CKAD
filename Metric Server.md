@@ -17,6 +17,9 @@ Apply the patch
 ```
 kubectl patch deploy metrics-server -p "$(cat k8s-metrics-server.patch.yaml)" -n kube-system
 ```
+```
+kubectl -n kube-system get po
+```
 To check the resource utilization by nodes
 ```
 kubectl top node

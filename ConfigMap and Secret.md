@@ -281,6 +281,7 @@ kubectl get secret
 kubectl describe secret secret-1
 ```
 You can inject the secret in all the three ways as above.
+
 Injecting all values
 ```
 vi sc-pod.yaml
@@ -304,7 +305,7 @@ OR injecting particular value
 ```
 vi sc-pod.yaml
 ```
-```
+```yaml
 apiVersion: v1
 kind: Pod
 metadata:

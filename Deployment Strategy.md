@@ -266,7 +266,7 @@ Access you application on the port 32123
 Service and deployment should have a common label.
 Add `type: web-app` to yaml file of both the deployments and apply again.
 
-Use `replace` as sometimes applying the existing yaml file might create issues.
+Use `replace` , as apply command might throw an error.
 ```
 kubectl replace -f web-green.yaml
 ```

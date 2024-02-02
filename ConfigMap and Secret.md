@@ -297,7 +297,7 @@ data:
   ## To encode and print
   ## echo -n '<value-to-be-encoded>' | base64
 
-  ## To decode
+  ## To decode and print
   ## echo '<value-to-be-decoded>' | base64 -d
 
   ##rootpw is root

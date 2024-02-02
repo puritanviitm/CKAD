@@ -152,6 +152,71 @@ echo $db_password
 ```
 env | grep db_
 ```
+### Task 4: Inject variables from ConfigMaps(FromFile) into POD.
+Create a file
+```
+vi token
+```
+```
+This is CKAD Training.
+We are practicing Injecting variables from ConfigMaps(FromFile) into POD.
+```
+Create a ConfigMap
+```
+kubectl create cm cm-1 --from-file=token         #--from-file=<filen-name>. This file name acts as the key
+```
+```
+kubectl get cm
+```
+```
+kubectl describe cm cm-1
+```
+Inject particular variable from the ConfigMap into the Pod Yaml File
+```
+vi env.yaml
+```
+```yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  labels:
+    app: web
+  name: web-pod
+spec:
+  containers:
+  - image: httpd
+    name: ctr-1
+    ports:
+    - containerPort: 80
+    env:
+    - name: db_password
+      valueFrom:
+        configMapKeyRef:
+          name: cm-1
+          key: db_pwd
+```
+```
+kubectl apply -f env.yaml
+```
+```
+kubectl describe pod web-pod
+```
+Enter the pod and check if the variable has been passed correctly or not
+```
+kubectl exec -it web-pod -- sh
+```
+```
+echo $db_user
+```
+```
+echo $db_pwd
+```
+```
+echo $db_password
+```
+```
+env | grep db_
+```
 
 ### Task 4 : Injecting ConfigMap as volume mount
 

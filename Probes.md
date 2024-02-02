@@ -100,9 +100,14 @@ kubectl apply -f readiness.yaml
 ```
 kubectl get pods
 ```
+Expose the pod
 ```
-kubectl expose 
-
+kubectl expose pod readiness-pod --name readiness-svc --port 80 
+```
+Describe the svc to check the endpoints or execute the below command.
+```
+kubectl get ep svc readiness-svc
+```
 Login inside pod and delete the file 
 ```
 kubectl exec -it readiness-pod bash 

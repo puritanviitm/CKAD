@@ -203,19 +203,13 @@ Enter the pod and check if the variable has been passed correctly or not
 kubectl exec -it web-pod -- sh
 ```
 ```
-echo $db_user
+echo $token
 ```
 ```
-echo $db_pwd
-```
-```
-echo $db_password
-```
-```
-env | grep db_
+env | grep token
 ```
 
-### Task 4 : Injecting ConfigMap as volume mount
+### Task 5 : Injecting ConfigMap as volume mount
 
 Create a ConfigMap
 ```
@@ -242,7 +236,7 @@ spec:
   volumes:
   - name: cm-volume
     configMap:
-      name: cm-2
+      name: cm-1
   containers:
   - image: httpd
     name: ctr-1

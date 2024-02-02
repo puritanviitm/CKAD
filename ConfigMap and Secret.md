@@ -211,9 +211,17 @@ env | grep token
 
 ### Task 5 : Injecting ConfigMap as volume mount
 
+Create a file
+```
+vi token
+```
+```
+This is CKAD Training.
+We are practicing Injecting variables from ConfigMaps(FromFile) into POD.
+```
 Create a ConfigMap
 ```
-kubectl create cm cm-1 --from-literal=db_user=admin --from-literal=db_pwd=1234
+kubectl create cm cm-1 --from-file=token        
 ```
 ```
 kubectl get cm
@@ -223,7 +231,7 @@ kubectl describe cm cm-1
 ```
 Inject as volume mount
 ```
-vi pod.yaml
+vi env.yaml
 ```
 ```yaml
 apiVersion: v1
@@ -247,6 +255,23 @@ spec:
     - containerPort: 80
 
 ```
+```
+kubectl apply -f env.yaml
+```
+```
+kubectl describe pod web-pod
+```
+Enter the pod and check if the variable has been passed correctly or not
+```
+kubectl exec -it web-pod -- sh
+```
+```
+echo $token
+```
+```
+env | grep token
+```
+
 ### Task 5 : Secret
 ```
 kubectl create secret generic secret-1 --from-literal=db_user=admin --from-literal=db_pwd=123

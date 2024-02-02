@@ -29,7 +29,7 @@ spec:
         - cat
         - /liveness
       initialDelaySeconds: 5
-      periodSeconds: 5
+      periodSeconds: 60
 ```
 ```
 kubectl apply -f liveness.yaml

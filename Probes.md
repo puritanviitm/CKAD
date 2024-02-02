@@ -95,11 +95,13 @@ spec:
       periodSeconds: 5
 ```
 ```	  
-kubectl create -f readiness.yaml
+kubectl apply -f readiness.yaml
 ```
 ```
 kubectl get pods
 ```
+```
+kubectl expose 
 
 Login inside pod and delete the file 
 ```

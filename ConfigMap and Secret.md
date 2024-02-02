@@ -310,7 +310,7 @@ data:
   password: bXlwd2QK
 ```
 ```
-kubectl create -f secrets.yaml
+kubectl apply -f secrets.yaml
 ```
 ```
 kubectl get secrets

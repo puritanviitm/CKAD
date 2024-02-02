@@ -1,4 +1,6 @@
 ## Probes
+A probe is a diagnostic performed periodically by the kubelet on a container. To perform a diagnostic, the kubelet either executes code within the container, or makes a network request
+
 
 ### Task 1: Liveness probes
 

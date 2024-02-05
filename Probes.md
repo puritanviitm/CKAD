@@ -173,6 +173,7 @@ kubectl apply -f startup.yaml
 ```
 kubectl get po
 ```
+The startup pobe fails
 ```
 kubectl describe po startup-pod 
 ```
@@ -206,6 +207,12 @@ spec:
       periodSeconds: 5
 ```
 ```
-
 kubectl get po
 ```
+```
+kubectl describe po startup1-pod
+```
+
+The startup probe is typically used to determine whether the application within the container has successfully started. It is considered successful if the command specified in the exec probe succeeds.
+
+If we manually delete the "/startup" file within the container after the startup probe has already started and passed once, subsequent probes might still succeed. This is because the initial state of the probe, which was successful, remains in memory, and subsequent probes may not detect changes in the file system.

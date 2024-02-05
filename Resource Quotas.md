@@ -1,14 +1,22 @@
-Lab 8: Resource Quotas in Kubernetes
--------------------------------------------------
-Task 1: Creating a Namespace
--------------------------------------------------
+## Resource Quotas
+
+### Task 1: Creating a Namespace
+```
 kubectl create namespace quotas
+```
+```
 kubectl get ns
+```
+```
 kubectl describe ns quotas
--------------------------------------------------
-Task 2: Creating a resourcequota
--------------------------------------------------
+```
+
+
+### Task 2: Creating a resourcequota
+```
 vi rq-quotas.yaml
+```
+```yaml
 
 apiVersion: v1
 kind: ResourceQuota
@@ -24,13 +32,14 @@ spec:
 
 kubectl create -f rq-quotas.yaml
 kubectl describe ns resourcequota
+```
 
 
-------------------------------------------------
-Task 3: Verify resourcequota Functionality
--------------------------------------------------
+### Task 3: Verify resourcequota Functionality
+```
 vi rq-pod.yaml
-
+```
+```yaml
 apiVersion: v1
 kind: Pod
 metadata:
@@ -49,21 +58,29 @@ spec:
         cpu: "350m"
     ports:
       - containerPort: 80
-	  
+```
+```	  
 kubectl create -f rq-pod.yaml
+```
+```
 kubectl describe ns resourcequota
+```
+```
 kubectl get resourcequota -n quotas -o yaml
+```
 
--------------------------------------------------
-Task 4: Limiting Number of Pods
--------------------------------------------------
+### Task 4: Limiting Number of Pods
+```
 kubectl edit resourcequotas quota -n quotas
+```
 add following lines in spec: > hard:
 counts/deployments.apps: 2
 counts/replicasets.apps: 3
 
--------------------------------------------------
-Task 5: Clean-up
--------------------------------------------------
+
+### Task 5: Clean-up
+
 #Delete the quota to clean up.
+```
 kubectl delete ns quotas
+```

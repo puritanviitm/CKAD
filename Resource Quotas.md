@@ -177,9 +177,3 @@ spec:
 kubectl apply -f rq5.yaml
 ```
 
-### Task 5: Clean-up
-
-#Delete the quota to clean up.
-```
-kubectl delete ns ns1 ns2
-```

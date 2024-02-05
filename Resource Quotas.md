@@ -25,7 +25,7 @@ vi quota.yaml
 apiVersion: v1
 kind: ResourceQuota
 metadata:
-  name: quota
+  name: rs-quota
   namespace: quotas
 spec:
   hard:
@@ -39,7 +39,7 @@ spec:
 kubectl apply -f quota.yaml
 ```
 ```
-kubectl describe ns resourcequota
+kubectl describe ns quotas
 ```
 
 

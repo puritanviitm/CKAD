@@ -21,7 +21,7 @@
 * [Lab-6: Metric Server](https://github.com/Mehar-Nafis/CKAD/blob/main/Metric%20Server.md)
 * [Lab-7: ConfigMap and Secret](https://github.com/Mehar-Nafis/CKAD/blob/main/ConfigMap%20and%20Secret.md)
 * [Lab-8: Resource Quotas](https://github.com/Mehar-Nafis/CKAD/blob/main/Resource%20Quotas.md)
-* [Lab-9: Pod and Container level security using Context](https://github.com/Mehar-Nafis/CKAD/blob/main/Pod%20and%20Container%20level%20security%20using%20Context.md)
+* [Lab-9: Security Context](https://github.com/Mehar-Nafis/CKAD/blob/main/Security%20Context.md)
 * [Lab-10: Kubernetes Network Policy](https://github.com/Mehar-Nafis/CKAD/blob/main/Kubernetes%20Network%20Policy.md)
 * [Lab-11: RBAC](https://github.com/Mehar-Nafis/CKAD/blob/main/RBAC.md)
 * [Lab-12: Node Labelling and Constraining pods in Kubernetes](https://github.com/Mehar-Nafis/CKAD/blob/main/Node%20Labelling%20and%20Constraining%20pods%20in%20Kubernetes.md)

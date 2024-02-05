@@ -13,9 +13,12 @@ kubectl describe ns quotas
 
 
 ### Task 2: Creating a resourcequota
-Create a pod to before applying resource quota to check if the resource quota is applicable to existing object or not.
+Create a pod and expose it, before applying resource quota to check if the resource quota applies to existing object or not.
 ```
 kubectl -n quotas run quota-pod --image nginx --port 80
+```
+```
+kubectl expose pod quota-pod --name quota-svc --port 80 --type NodePort
 ```
 ```
 vi quota.yaml

@@ -178,6 +178,22 @@ The startup pobe fails
 kubectl describe po startup-pod 
 ```
 ```
+kubectl exec -it pods/startup-pod -- sh
+```
+```
+touch startup
+```
+```
+exit
+```
+There is no change in the status of the pod.
+```
+kubectl describe po startup-pod 
+```
+```
+kubectl get po
+```
+```
 vi startup1.yaml
 ```
 ```

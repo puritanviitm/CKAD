@@ -2,7 +2,7 @@
 
 ### Task 1: Set the security context for a pod
 ```
-vi sc-pod.yml
+vi sc-pod.yaml
 ```
 ```yaml
 apiVersion: v1
@@ -31,7 +31,7 @@ spec:
         allowPrivilegeEscalation: false
 ```
 ```
-kubectl create -f sc-pod.yml
+kubectl create -f sc-pod.yaml
 ```
 ```
 kubectl exec -it sc-pod -- sh
@@ -61,7 +61,7 @@ id
 ### Task 2: Set the security context for a container
 
 ```
-vi sc-ctr.yml
+vi sc-ctr.yaml
 ```
 ```yaml
 
@@ -79,7 +79,7 @@ spec:
 	  
 ```
 ```
-kubectl create -f sc-ctr.yml
+kubectl create -f sc-ctr.yaml
 ```
 ```
 kubectl get pods

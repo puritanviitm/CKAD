@@ -13,8 +13,12 @@ kubectl describe ns quotas
 
 
 ### Task 2: Creating a resourcequota
+Create a pod to before applying resource quota to check if the resource quota is applicable to existing object or not.
 ```
-vi rq-quotas.yaml
+kubectl -n quotas run quota-pod --image nginx --port 80
+```
+```
+vi quota.yaml
 ```
 ```yaml
 
@@ -30,12 +34,16 @@ spec:
     limits.cpu: "2"
     limits.memory: 2Gi
 
-kubectl create -f rq-quotas.yaml
+```
+```
+kubectl apply -f quota.yaml
+```
+```
 kubectl describe ns resourcequota
 ```
 
 
-### Task 3: Verify resourcequota Functionality
+### Task 3: Verify Resource Quota Functionality
 ```
 vi rq-pod.yaml
 ```

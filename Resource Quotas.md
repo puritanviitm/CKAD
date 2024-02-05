@@ -21,7 +21,7 @@ kubectl describe ns quotas
 ```
 
 
-### Task 2: Creating a Resource Quota
+### Task 2: Creating a Resource Quota and constraining Object Creation
 
 Create a pod and expose it, before applying the resource quota to check if the resource quota applies to existing objects or not.
 ```
@@ -98,15 +98,6 @@ kubectl describe ns resourcequota
 ```
 kubectl get resourcequota -n quotas -o yaml
 ```
-
-### Task 4: Limiting Number of Pods
-```
-kubectl edit resourcequotas quota -n quotas
-```
-add following lines in spec: > hard:
-counts/deployments.apps: 2
-counts/replicasets.apps: 3
-
 
 ### Task 5: Clean-up
 

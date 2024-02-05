@@ -43,6 +43,9 @@ kubectl -n ns1 create quota rs-quota1 --hard=pods=3,services=1
 ```
 kubectl describe ns ns1
 ```
+```
+kubectl get quota -n ns1
+```
 Declarative
 ```
 vi rq2.yaml
@@ -65,6 +68,9 @@ kubectl apply -f rq2.yaml
 ```
 ```
 kubectl describe ns ns1
+```
+```
+kubectl get quota -n ns1
 ```
 
 ### Task 3: Creating Resource Quota and Constraining Resources

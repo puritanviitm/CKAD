@@ -72,6 +72,10 @@ kubectl describe ns ns1
 ```
 kubectl get quota -n ns1
 ```
+Try deploying a new pod in namespace ns1
+```
+kubectl -n ns1 run pod3 --image nginx --port 80
+```
 
 ### Task 3: Creating Resource Quota and Constraining Resources
 

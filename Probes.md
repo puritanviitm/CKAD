@@ -167,4 +167,45 @@ spec:
       initialDelaySeconds: 10
       periodSeconds: 5
 ```
+```
+kubectl apply -f startup.yaml
+```
+```
+kubectl get po
+```
+```
+kubectl describe po startup-pod 
+```
+```
+vi startup1.yaml
+```
+```
+kubectl apply -f startup1.yaml 
+```
+```yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  labels:
+    app: lns
+  name: startup1-pod
+spec:
+  containers:
+  - name: startup1
+    image: busybox
+    args:
+    - /bin/sh
+    - -c
+    - touch /startup1; sleep 6000
+    startupProbe:
+      exec:
+        command:
+        - cat
+        - /startup1
+      initialDelaySeconds: 10
+      periodSeconds: 5
+```
+```
 
+kubectl get po
+```

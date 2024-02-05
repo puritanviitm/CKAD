@@ -36,10 +36,11 @@ kubectl -n quotas run pod2 --image nginx --port 80
 ```
 kubectl -n quotas expose pod pod2 --name pod2-svc --port 80 --type NodePort
 ```
-Imperative command to create resource Quota
+Imperative 
 ```
 kubectl -n quotas create quota rs-quota1 --hard=pods=3,services=3
 ```
+Declarative
 ```
 vi quota.yaml
 ```

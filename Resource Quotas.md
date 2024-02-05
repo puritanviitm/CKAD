@@ -1,6 +1,13 @@
 ## Resource Quotas
 
 ### Task 1: Creating a Namespace
+
+In Kubernetes, a ResourceQuota is a way to limit the amount of resources (CPU, memory, and persistent storage) that a namespace can consume. It helps in preventing resource exhaustion and ensures that one namespace doesn't negatively impact the performance or stability of others.
+
+All namespaced objects can be identified by the below command
+```
+kubectl api-resources
+```
 ```
 kubectl create namespace quotas
 ```
@@ -13,6 +20,7 @@ kubectl describe ns quotas
 
 
 ### Task 2: Creating a resourcequota
+
 Create a pod and expose it, before applying resource quota to check if the resource quota applies to existing object or not.
 ```
 kubectl -n quotas run quota-pod --image nginx --port 80

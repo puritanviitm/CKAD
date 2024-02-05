@@ -75,8 +75,7 @@ spec:
     image: gcr.io/google-samples/node-hello:1.0
     securityContext:
       runAsUser: 2000
-      allowPrivilegeEscalation: false
-	  
+      allowPrivilegeEscalation: false  
 ```
 ```
 kubectl create -f sc-ctr.yaml

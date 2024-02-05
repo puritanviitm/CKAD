@@ -40,6 +40,9 @@ Imperative
 ```
 kubectl -n ns1 create quota rs-quota1 --hard=pods=3,services=1
 ```
+```
+kubectl describe ns ns1
+```
 Declarative
 ```
 vi rq2.yaml

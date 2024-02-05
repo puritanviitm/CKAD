@@ -149,6 +149,33 @@ kubectl describe ns ns2
 ```
 kubectl get resourcequota -n ns2 -o yaml
 ```
+Deploy another Pod, such that the total resource exceeds the resoucre quota limit
+```
+vi rq5.yaml
+```
+```yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: pod6
+  namespace: ns2
+spec:
+  containers:
+  - name: quota-ctr
+    image: nginx
+    resources:
+      limits:
+        memory: "1600Mi"
+        cpu: "2000m"
+      requests:
+        memory: "1600Mi"
+        cpu: "800m"
+    ports:
+      - containerPort: 80
+```
+```
+kubectl apply -f rq5.yaml
+```
 
 ### Task 5: Clean-up
 

@@ -11,38 +11,38 @@ The below command can identify all namespaced objects
 kubectl api-resources
 ```
 ```
-kubectl create namespace quotas
+kubectl create namespace ns1
 ```
 ```
 kubectl get ns
 ```
 ```
-kubectl describe ns quotas
+kubectl describe ns ns1
 ```
 
 
-### Task 2: Creating a Resource Quota and constraining Object Creation
+### Task 2: Creating Resource Quota and Constraining Object Creation
 
 Create a pod and expose it, before applying the resource quota to check if the resource quota applies to existing objects or not.
 ```
-kubectl -n quotas run pod1 --image nginx --port 80
+kubectl -n ns1 run pod1 --image nginx --port 80
 ```
 ```
-kubectl -n quotas expose pod pod1 --name pod1-svc --port 80 --type NodePort
+kubectl -n ns1 expose pod pod1 --name pod1-svc --port 80 --type NodePort
 ```
 ```
-kubectl -n quotas run pod2 --image nginx --port 80
+kubectl -n ns1 run pod2 --image nginx --port 80
 ```
 ```
-kubectl -n quotas expose pod pod2 --name pod2-svc --port 80 --type NodePort
+kubectl -n ns1 expose pod pod2 --name pod2-svc --port 80 --type NodePort
 ```
 Imperative 
 ```
-kubectl -n quotas create quota rs-quota1 --hard=pods=3,services=3
+kubectl -n ns1 create quota rs-quota1 --hard=pods=3,services=3
 ```
 Declarative
 ```
-vi quota.yaml
+vi rq2.yaml
 ```
 ```yaml
 
@@ -50,7 +50,7 @@ apiVersion: v1
 kind: ResourceQuota
 metadata:
   name: rs-quota2
-  namespace: quotas
+  namespace: ns1
 spec:
   hard:
     pods: "2"
@@ -58,14 +58,49 @@ spec:
 
 ```
 ```
-kubectl apply -f quota.yaml
+kubectl apply -f rq2.yaml
 ```
 ```
-kubectl describe ns quotas
+kubectl describe ns ns1
 ```
 
+### Task 3: Creating Resource Quota and Constraining Resources
 
-### Task 3: Verify Resource Quota Functionality
+Create a new namespace
+```
+kubectl create namespace ns2
+```
+```
+kubectl get ns
+```
+```
+kubectl describe ns ns2
+```
+```
+vi rq3.yaml
+```
+```yaml
+
+apiVersion: v1
+kind: ResourceQuota
+metadata:
+  name: rs-quota3
+  namespace: ns2
+spec:
+  hard:
+    requests.cpu: "1"
+    requests.memory: 1Gi
+    limits.cpu: "2"
+    limits.memory: 2Gi
+```
+```
+kubectl apply -f rq3.yaml
+```
+```
+kubectl describe ns ns2
+```
+
+### Task 4: Verify Resource Quota Functionality
 ```
 vi rq-pod.yaml
 ```

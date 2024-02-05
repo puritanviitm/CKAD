@@ -6,7 +6,7 @@ In Kubernetes, a ResourceQuota is a way to limit the amount of resources (CPU, m
 
 Keep in mind that ResourceQuotas are a way to define constraints, and they do not actively enforce them on existing resources. They are checked when new resources are created or when existing resources are updated. If a namespace exceeds its quota, the creation or update of resources may be rejected.
 
-All namespaced objects can be identified by the below command
+The below command can identify all namespaced objects
 ```
 kubectl api-resources
 ```
@@ -21,14 +21,24 @@ kubectl describe ns quotas
 ```
 
 
-### Task 2: Creating a resourcequota
+### Task 2: Creating a Resource Quota
 
-Create a pod and expose it, before applying resource quota to check if the resource quota applies to existing object or not.
+Create a pod and expose it, before applying the resource quota to check if the resource quota applies to existing objects or not.
 ```
-kubectl -n quotas run quota-pod --image nginx --port 80
+kubectl -n quotas run pod1 --image nginx --port 80
 ```
 ```
-kubectl expose pod quota-pod --name quota-svc --port 80 --type NodePort
+kubectl -n quotas expose pod pod1 --name pod1-svc --port 80 --type NodePort
+```
+```
+kubectl -n quotas run pod2 --image nginx --port 80
+```
+```
+kubectl -n quotas expose pod pod2 --name pod2-svc --port 80 --type NodePort
+```
+Imperative command to create resource Quota
+```
+kubectl -n quotas create quota rs-quota1 --hard=pods=3,services=3
 ```
 ```
 vi quota.yaml
@@ -38,14 +48,12 @@ vi quota.yaml
 apiVersion: v1
 kind: ResourceQuota
 metadata:
-  name: rs-quota
+  name: rs-quota2
   namespace: quotas
 spec:
   hard:
-    requests.cpu: "1"
-    requests.memory: 1Gi
-    limits.cpu: "2"
-    limits.memory: 2Gi
+    pods: "2"
+    services: "2"
 
 ```
 ```

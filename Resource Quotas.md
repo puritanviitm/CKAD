@@ -115,14 +115,17 @@ kubectl describe ns ns2
 
 ### Task 4: Verify Resource Quota Functionality
 ```
-vi rq-pod.yaml
+kubectl -n ns2 run pod4 --image nginx --port 80
+```
+```
+vi rq4.yaml
 ```
 ```yaml
 apiVersion: v1
 kind: Pod
 metadata:
-  name: quota-pod
-  namespace: quotas
+  name: pod5
+  namespace: ns2
 spec:
   containers:
   - name: quota-ctr
@@ -138,18 +141,18 @@ spec:
       - containerPort: 80
 ```
 ```	  
-kubectl create -f rq-pod.yaml
+kubectl create -f rq4.yaml
 ```
 ```
-kubectl describe ns resourcequota
+kubectl describe ns ns2
 ```
 ```
-kubectl get resourcequota -n quotas -o yaml
+kubectl get resourcequota -n ns2 -o yaml
 ```
 
 ### Task 5: Clean-up
 
 #Delete the quota to clean up.
 ```
-kubectl delete ns quotas
+kubectl delete ns ns1 ns2
 ```

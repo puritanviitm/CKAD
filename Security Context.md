@@ -1,9 +1,10 @@
-Lab 9: Pod and Container level security using Context
----------------------------------------------------------
-Task 1: Set the security context for a pod
----------------------------------------------------
-vi sc-pod.yml
+## Security Context
 
+### Task 1: Set the security context for a pod
+```
+vi sc-pod.yml
+```
+```yaml
 apiVersion: v1
 kind: Pod
 metadata:
@@ -28,22 +29,41 @@ spec:
           mountPath: /data/demo
       securityContext:
         allowPrivilegeEscalation: false
-  
+```
+```
 kubectl create -f sc-pod.yml
+```
+```
 kubectl exec -it sc-pod -- sh
-ps 
+```
+```
+ps
+```
+```
 cd /data
+```
+```
 ls
+```
+```
 cd demo
+```
+```
 echo hello > testfile
+```
+```
 ls -l
+```
+```
 id
+```
 
----------------------------------------------------
-Task 2: Set the security context for a container
----------------------------------------------------
+### Task 2: Set the security context for a container
 
+```
 vi sc-ctr.yml
+```
+```yaml
 
 apiVersion: v1
 kind: Pod
@@ -57,15 +77,21 @@ spec:
       runAsUser: 2000
       allowPrivilegeEscalation: false
 	  
-
+```
+```
 kubectl create -f sc-ctr.yml
-
+```
+```
 kubectl get pods
+```
+```
 kubectl exec -it sc-pod2 -- sh
+```
+```
 ps aux
+```
+```
 exit
-
-#Delete the resources that we created in this lab
-kubectl delete -f sc-pod.yml 
-kubectl delete -f sc-ctr.yml
+```
+```
 

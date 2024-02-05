@@ -138,3 +138,33 @@ Check for endpoints
 kubectl describe svc readiness-svc
 ```
 Endpoints are back
+
+
+### Task 3: Startup probe
+```
+vi startup.yaml
+```
+```yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  labels:
+    app: lns
+  name: startup-pod
+spec:
+  containers:
+  - name: startup
+    image: busybox
+    args:
+    - /bin/sh
+    - -c
+    - echo "Startup completed"; sleep 6000
+    startupProbe:
+      exec:
+        command:
+        - cat
+        - /startup
+      initialDelaySeconds: 10
+      periodSeconds: 5
+```
+

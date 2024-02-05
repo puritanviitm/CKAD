@@ -141,7 +141,7 @@ spec:
       - containerPort: 80
 ```
 ```	  
-kubectl create -f rq4.yaml
+kubectl apply -f rq4.yaml
 ```
 ```
 kubectl describe ns ns2

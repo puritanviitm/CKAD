@@ -38,7 +38,7 @@ kubectl -n ns1 expose pod pod2 --name pod2-svc --port 80 --type NodePort
 ```
 Imperative 
 ```
-kubectl -n ns1 create quota rs-quota1 --hard=pods=3,services=3
+kubectl -n ns1 create quota rs-quota1 --hard=pods=3,services=1
 ```
 Declarative
 ```

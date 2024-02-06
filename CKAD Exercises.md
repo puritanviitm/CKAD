@@ -14,5 +14,5 @@ It is recommended that you study the official documentation before undertaking t
 * [Observability - 18%]()
 * [Services and networking - 13%]()
 * [State persistence - 8%]()
-* [Helm]
+* [Helm]()
 * [Custom Resource Definitions]()

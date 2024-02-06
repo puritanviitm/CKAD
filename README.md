@@ -26,6 +26,6 @@
 * [Lab-11: RBAC](https://github.com/Mehar-Nafis/CKAD/blob/main/RBAC.md)
 * [Lab-12: Node Labelling and Constraining pods in Kubernetes](https://github.com/Mehar-Nafis/CKAD/blob/main/Node%20Labelling%20and%20Constraining%20pods%20in%20Kubernetes.md)
 * [Lab-13: Advanced Pod Scheduling](https://github.com/Mehar-Nafis/CKAD/blob/main/Advanced%20Pod%20Scheduling.md)
-* [Lab-14: Helm](https://github.com/Mehar-Nafis/CKAD/blob/main/Installing%20WordPress%20with%20Helm.md)
+* [Lab-14: Helm](https://github.com/Mehar-Nafis/CKAD/blob/main/Helm.md)
 * [Reference Links](https://github.com/Mehar-Nafis/CKAD/blob/main/Reference%20Links.md)
 * [CKAD Exercises](https://github.com/Mehar-Nafis/CKAD/blob/main/CKAD%20Exercises.md)

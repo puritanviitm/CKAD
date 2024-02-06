@@ -77,7 +77,7 @@ Try deploying a new pod in namespace ns1
 kubectl -n ns1 run pod3 --image nginx --port 80
 ```
 
-### Task 3: Creating Resource Quota and Constraining Resources
+### Task 3: Creating Resource Quota and Constraining Hardware Resources
 
 Create a new namespace
 ```

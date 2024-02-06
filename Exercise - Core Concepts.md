@@ -1,6 +1,6 @@
 ## Exercise - Core Concepts
 
-### Create a namespace called 'ns1' and a pod pod1 with image nginx in this namespace
+### Create a namespace called `ns1` and a pod `pod1` with image `nginx` in this namespace
 
 <details><summary>show</summary>
 <p>

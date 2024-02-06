@@ -10,9 +10,9 @@ It is recommended that you study the official documentation before undertaking t
 * [Core Concepts - 13%]()
 * [Multi-container pods - 10%]()
 * [Pod design - 20%]()
-* Configuration - 18%()
-* Observability - 18%()
-* Services and networking - 13%()
-* State persistence - 8%()
-* Helm
-* Custom Resource Definitions()
+* [Configuration - 18%]()
+* [Observability - 18%]()
+* [Services and networking - 13%]()
+* [State persistence - 8%]()
+* [Helm]
+* [Custom Resource Definitions]()

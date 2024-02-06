@@ -1,13 +1,13 @@
 ## Exercise - Core Concepts
 
-### Create a namespace called 'mynamespace' and a pod with image nginx called nginx on this namespace
+### Create a namespace called 'ns1' and a pod pod1 with image nginx in this namespace
 
 <details><summary>show</summary>
 <p>
 
 ```bash
-kubectl create namespace mynamespace
-kubectl run nginx --image=nginx --restart=Never -n mynamespace
+kubectl create namespace ns1
+kubectl run pod1 --image=nginx --restart=Never -n ns1
 ```
 
 </p>
@@ -21,7 +21,7 @@ kubectl run nginx --image=nginx --restart=Never -n mynamespace
 Easily generate YAML with:
 
 ```bash
-kubectl run nginx --image=nginx --restart=Never --dry-run=client -n mynamespace -o yaml > pod.yaml
+kubectl run pod1 --image=nginx --restart=Never --dry-run=client -n ns1 -o yaml > pod.yaml
 ```
 
 ```bash
@@ -35,11 +35,11 @@ metadata:
   creationTimestamp: null
   labels:
     run: nginx
-  name: nginx
-  namespace: mynamespace
+  name: pod1
+  namespace: ns1
 spec:
   containers:
-  - image: nginx
+  - image: pod1
     imagePullPolicy: IfNotPresent
     name: nginx
     resources: {}
@@ -55,7 +55,7 @@ kubectl create -f pod.yaml
 Alternatively, you can run in one line
 
 ```bash
-kubectl run nginx --image=nginx --restart=Never --dry-run=client -o yaml | kubectl create -n mynamespace -f -
+kubectl run pod1 --image=nginx --restart=Never --dry-run=client -o yaml | kubectl create -n ns1 -f -
 ```
 
 </p>

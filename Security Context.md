@@ -11,7 +11,7 @@ vi security-context.yaml
 apiVersion: v1
 kind: Pod
 metadata:
-  name: security-context-demo
+  name: security-context-pod
 spec:
   securityContext:
     runAsUser: 1000
@@ -21,7 +21,7 @@ spec:
   - name: sec-ctx-vol
     emptyDir: {}
   containers:
-  - name: sec-ctx-demo
+  - name: sec-ctx-ctr
     image: busybox:1.28
     command: [ "sh", "-c", "sleep 1h" ]
     volumeMounts:

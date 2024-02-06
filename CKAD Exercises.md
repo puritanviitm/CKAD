@@ -7,12 +7,13 @@ It is recommended that you study the official documentation before undertaking t
 
 
 ### Contents
-* [Core Concepts - 13%]()
-* [Multi-container pods - 10%]()
-* [Pod design - 20%]()
-* [Configuration - 18%]()
-* [Observability - 18%]()
-* [Services and networking - 13%]()
-* [State persistence - 8%]()
-* [Helm]()
-* [Custom Resource Definitions]()
+* [Core Concepts - 13%](https://github.com/Mehar-Nafis/CKAD/blob/main/Exercise%20-%20Core%20Concepts.md)
+* [Multi-container pods - 10%](https://github.com/Mehar-Nafis/CKAD/blob/main/Exercise%20-%20Multi%20Container%20Pods.md)
+* [Pod design - 20%](https://github.com/Mehar-Nafis/CKAD/blob/main/Exercise%20-%20Pod%20Designs)
+* [Configuration - 18%](https://github.com/Mehar-Nafis/CKAD/blob/main/Exercise%20-%20Configuration.md)
+* [Observability - 18%](https://github.com/Mehar-Nafis/CKAD/blob/main/Exercise%20-%20Observability.md)
+* [Services and networking - 13%](https://github.com/Mehar-Nafis/CKAD/blob/main/Exercise%20-%20Services%20and%20Networking.md)
+* [State persistence - 8%](https://github.com/Mehar-Nafis/CKAD/blob/main/Exercise%20-%20State%20Persistence.md)
+* [Helm](https://github.com/Mehar-Nafis/CKAD/blob/main/Exercise%20-%20Helm.md)
+* [Custom Resource Definitions](https://github.com/Mehar-Nafis/CKAD/blob/main/Exercise%20-%20Custom%20Resource%20Definition.md)
+* [Podman](https://github.com/Mehar-Nafis/CKAD/blob/main/Exercise%20-%20Podman%20Basics.md)

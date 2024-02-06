@@ -1,1 +1,112 @@
+Lab 10: Kubernetes Network Policy
+
+--------------------------------------------------
+Task 1: Network policy with Pod labels
+--------------------------------------------------
+#Create a nginx pod and service with labels role=backend
+
+kubectl run backend --image nginx -l role=backend
+kubectl expose po backend --port 80 
+
+kubectl get pod
+kubectl get svc
+
+#Create a new busybox pod and verify that it can access the backend service.
+Then, exit out of the container
+
+kubectl run --rm -it --image=busybox net-policy 
+wget -qO- -T3 http://backend   #curl http://backend
+exit
+
+#Create a network policy which uses labels to deny all ingress traffic
+
+vi np-deny-all.yml
+
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: backend-policy
+spec:
+  podSelector:
+    matchLabels:
+      role: backend
+  ingress: []
+
+kubectl create -f np-deny-all.yml
+kubectl get networkpolicies
+
+#Create a new busybox pod again and verify that it cannot access the backend service
+
+kubectl run --rm -it --image=busybox net-policy
+wget -qO- -T3 http://backend
+it will show timeout
+exit
+
+#Modify the network policy to allow traffic with matching Pod labels 
+Inspect the network policy and notice the selectors
+
+vi np-pod-label-allow.yml
+
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: backend-policy
+spec:
+  podSelector:
+    matchLabels:
+      role: backend
+  ingress:
+  - from:
+    - namespaceSelector: {}
+      podSelector:
+        matchLabels:
+          role: frontend
+		  
+
+#before applying this yaml describe networkpolicies to check rule
+
+kubectl describe networkpolicies backend-policy
+
+kubectl apply -f np-pod-label-allow.yml
+
+kubectl describe networkpolicies backend-policy
+
+#Run the busybox pod again and verify that it is able to access backend service.
+Notice the labels on the Pod. Inspect the network policy and notice the selectors
+
+kubectl run --rm -it --image=busybox --labels role=frontend net-policy
+wget -qO- -T3 http://backend
+exit
+#Run the busybox pod again without labels and notice that the backend service is not accessible any more.
+
+kubectl run --rm -it --image=busybox net-policy 
+wget -qO- -T3 http://backend
+exit
+
+
+--------------------------------------------------------
+Task 2: Using WordPress and MySQL as Deployments(self-excercise)
+--------------------------------------------------------
+kubectl create ns networkdemo 
+
+kubectl create -f https://s3.ap-south-1.amazonaws.com/files.cloudthat.training/devops/kubernetes-cka/mysql_deploy.yaml -n networkdemo
+
+kubectl create -f https://s3.ap-south-1.amazonaws.com/files.cloudthat.training/devops/kubernetes-cka/wordpress_deploy.yaml -n networkdemo
+
+kubectl get pod,svc -n networkdemo 
+
+vim deny-all.yaml 
+
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: default-deny-ingress
+  namespace: networkdemo
+spec:
+  podSelector:
+    matchLabels: {}
+  policyTypes:
+  - Ingress
+
+kubectl apply -f deny-all.yaml -n networkdemo
 

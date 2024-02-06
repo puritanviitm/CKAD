@@ -79,16 +79,6 @@ kubectl -n ns1 run pod3 --image nginx --port 80
 
 ### Task 3: Creating Resource Quota and Constraining Hardware Resources
 
-Create a new namespace
-```
-kubectl create namespace ns2
-```
-```
-kubectl get ns
-```
-```
-kubectl describe ns ns2
-```
 ```
 vi rq3.yaml
 ```
@@ -98,7 +88,7 @@ apiVersion: v1
 kind: ResourceQuota
 metadata:
   name: rs-quota3
-  namespace: ns2
+  namespace: ns1
 spec:
   hard:
     requests.cpu: "1"
@@ -110,12 +100,12 @@ spec:
 kubectl apply -f rq3.yaml
 ```
 ```
-kubectl describe ns ns2
+kubectl describe ns ns1
 ```
 
 ### Task 4: Verify Resource Quota Functionality
 ```
-kubectl -n ns2 run pod4 --image nginx --port 80
+kubectl -n ns1 run pod4 --image nginx --port 80
 ```
 ```
 vi rq4.yaml
@@ -125,7 +115,7 @@ apiVersion: v1
 kind: Pod
 metadata:
   name: pod5
-  namespace: ns2
+  namespace: ns1
 spec:
   containers:
   - name: quota-ctr
@@ -144,10 +134,10 @@ spec:
 kubectl apply -f rq4.yaml
 ```
 ```
-kubectl describe ns ns2
+kubectl describe ns ns1
 ```
 ```
-kubectl get resourcequota -n ns2 -o yaml
+kubectl get resourcequota -n ns1 -o yaml
 ```
 Deploy another Pod, such that the total resource exceeds the resoucre quota limit
 ```
@@ -158,7 +148,7 @@ apiVersion: v1
 kind: Pod
 metadata:
   name: pod6
-  namespace: ns2
+  namespace: ns1
 spec:
   containers:
   - name: quota-ctr

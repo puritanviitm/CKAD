@@ -7,6 +7,8 @@
 
 ```bash
 kubectl create namespace ns1
+```
+```
 kubectl run pod1 --image=nginx --restart=Never -n ns1
 ```
 

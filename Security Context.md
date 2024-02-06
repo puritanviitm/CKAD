@@ -18,18 +18,11 @@ spec:
     runAsUser: 1000
     runAsGroup: 3000
     fsGroup: 2000
-  volumes:
-  - name: sec-ctx-vol
-    emptyDir: {}
-  containers:
+   containers:
   - name: sec-ctx-demo
     image: busybox:1.28
     command: [ "sh", "-c", "sleep 1h" ]
-    volumeMounts:
-    - name: sec-ctx-vol
-      mountPath: /data/demo
-    securityContext:
-      allowPrivilegeEscalation: false
+
 ```
 Create the Pod:
 ```

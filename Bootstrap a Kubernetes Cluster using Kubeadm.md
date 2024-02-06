@@ -205,7 +205,7 @@ To check the API version of any resource
 ```
 kubectl api-resources
 ```
-```
+
 Create a Pod called http based on a Docker image on the master.
 ```
 kubectl run httpd --image=httpd

@@ -12,7 +12,7 @@ vi security-context.yaml
 apiVersion: v1
 kind: Pod
 metadata:
-  name: security-context-demo
+  name: security-context-pod
 spec:
   securityContext:
     runAsUser: 1000
@@ -33,15 +33,15 @@ spec:
 ```
 Create the Pod:
 ```
-kubectl apply -f https://k8s.io/examples/pods/security/security-context.yaml
+kubectl apply -f security-context.yaml
 ```
 Verify that the Pod's Container is running:
 ```
-kubectl get pod security-context-demo
+kubectl get pod security-context-pod
 ```
 Get a shell to the running Container:
 ```
-kubectl exec -it security-context-demo -- sh
+kubectl exec -it security-context-pod -- sh
 ```
 In your shell, list the running processes:
 ```

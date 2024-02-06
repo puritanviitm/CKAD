@@ -28,4 +28,4 @@
 * [Lab-13: Advanced Pod Scheduling](https://github.com/Mehar-Nafis/CKAD/blob/main/Advanced%20Pod%20Scheduling.md)
 * [Lab-14: Installing WordPress with Helm](https://github.com/Mehar-Nafis/CKAD/blob/main/Installing%20WordPress%20with%20Helm.md)
 * [Reference Links](https://github.com/Mehar-Nafis/CKAD/blob/main/Reference%20Links.md)
-* [CKAD Exercises]()
+* [CKAD Exercises](https://github.com/Mehar-Nafis/CKAD/blob/main/CKAD%20Exercises.md)

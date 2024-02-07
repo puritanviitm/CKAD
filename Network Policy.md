@@ -1,27 +1,36 @@
-Lab 10: Kubernetes Network Policy
+## Network Policy
 
---------------------------------------------------
-Task 1: Network policy with Pod labels
---------------------------------------------------
-#Create a nginx pod and service with labels role=backend
+### Task 1: Network policy with Pod labels
 
+Create a nginx pod and service with labels role=backend
+```
 kubectl run backend --image nginx -l role=backend
+```
+```
 kubectl expose po backend --port 80 
-
+```
+```
 kubectl get pod
+```
+```
 kubectl get svc
-
-#Create a new busybox pod and verify that it can access the backend service.
+```
+Create a new busybox pod and verify that it can access the backend service.
 Then, exit out of the container
-
+```
 kubectl run --rm -it --image=busybox net-policy 
+```
+```
 wget -qO- -T3 http://backend   #curl http://backend
+```
+```
 exit
-
-#Create a network policy which uses labels to deny all ingress traffic
-
+```
+Create a network policy which uses labels to deny all ingress traffic
+```
 vi np-deny-all.yml
-
+```
+```yaml
 apiVersion: networking.k8s.io/v1
 kind: NetworkPolicy
 metadata:
@@ -31,22 +40,30 @@ spec:
     matchLabels:
       role: backend
   ingress: []
-
+```
+```
 kubectl create -f np-deny-all.yml
+```
+```
 kubectl get networkpolicies
-
-#Create a new busybox pod again and verify that it cannot access the backend service
-
+```
+Create a new busybox pod again and verify that it cannot access the backend service
+```
 kubectl run --rm -it --image=busybox net-policy
+```
+```
 wget -qO- -T3 http://backend
-it will show timeout
+```
+It will show timeout
+```
 exit
-
-#Modify the network policy to allow traffic with matching Pod labels 
+```
+Modify the network policy to allow traffic with matching Pod labels 
 Inspect the network policy and notice the selectors
-
+```
 vi np-pod-label-allow.yml
-
+```
+```yaml
 apiVersion: networking.k8s.io/v1
 kind: NetworkPolicy
 metadata:
@@ -62,31 +79,41 @@ spec:
         matchLabels:
           role: frontend
 		  
-
-#before applying this yaml describe networkpolicies to check rule
-
+```
+Before applying this yaml describe networkpolicies to check rule
+```
 kubectl describe networkpolicies backend-policy
-
+```
+```
 kubectl apply -f np-pod-label-allow.yml
-
+```
+```
 kubectl describe networkpolicies backend-policy
-
-#Run the busybox pod again and verify that it is able to access backend service.
+```
+Run the busybox pod again and verify that it is able to access backend service.
 Notice the labels on the Pod. Inspect the network policy and notice the selectors
-
+```
 kubectl run --rm -it --image=busybox --labels role=frontend net-policy
+```
+```
 wget -qO- -T3 http://backend
+```
+```
 exit
-#Run the busybox pod again without labels and notice that the backend service is not accessible any more.
-
+```
+Run the busybox pod again without labels and notice that the backend service is not accessible any more.
+```
 kubectl run --rm -it --image=busybox net-policy 
+```
+```
 wget -qO- -T3 http://backend
+```
+```
 exit
+```
 
+### Task 2: Using WordPress and MySQL as Deployments
 
---------------------------------------------------------
-Task 2: Using WordPress and MySQL as Deployments(self-excercise)
---------------------------------------------------------
 kubectl create ns networkdemo 
 
 kubectl create -f https://s3.ap-south-1.amazonaws.com/files.cloudthat.training/devops/kubernetes-cka/mysql_deploy.yaml -n networkdemo

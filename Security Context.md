@@ -2,7 +2,9 @@
 
 ### Task 1: Set the security context for a Pod
 
-To specify security settings for a Pod, include the securityContext field in the Pod specification. The securityContext field is a PodSecurityContext object. The security settings that you specify for a Pod apply to all Containers in the Pod. Here is a configuration file for a Pod that has a securityContext and an emptyDir volume:
+To specify security settings for a Pod, include the securityContext field in the Pod specification. 
+
+The security settings that you specify for a Pod apply to all Containers in the Pod. Here is a configuration file for a Pod that has a securityContext and an emptyDir volume:
 
 ```
 vi security-context.yaml
@@ -75,35 +77,44 @@ exit
 
 ### Task 2: Set the security context for a container
 
+To specify security settings for a Container, include the securityContext field in the Container manifest. 
+
+Security settings that you specify for a Container apply only to the individual Container, and they override settings made at the Pod level when there is overlap. Container settings do not affect the Pod's Volumes.
+
+Below is the configuration file for a Pod that has one Container. Both the Pod and the Container have a securityContext field:
 ```
-vi sc-ctr.yaml
+vi security-context-2.yaml
 ```
 ```yaml
 
 apiVersion: v1
 kind: Pod
 metadata:
-  name: sc-pod2
+  name: security-context-demo-2
 spec:
+  securityContext:
+    runAsUser: 1000
   containers:
-  - name: sc-ctr2
+  - name: sec-ctx-demo-2
     image: gcr.io/google-samples/node-hello:1.0
     securityContext:
       runAsUser: 2000
-      allowPrivilegeEscalation: false  
+      allowPrivilegeEscalation: false
 ```
+Create the Pod:
 ```
-kubectl create -f sc-ctr.yaml
+kubectl apply -f security-context-2.yaml
 ```
+Verify that the Pod's Container is running:
 ```
-kubectl get pods
+kubectl get pod security-context-demo-2
 ```
+Get a shell into the running Container:
 ```
-kubectl exec -it sc-pod2 -- sh
+kubectl exec -it security-context-demo-2 -- sh
 ```
+In your shell, list the running processes:
 ```
 ps aux
 ```
-```
-exit
-```
+The output shows that the processes are running as user 2000. This is the value of runAsUser specified for the Container. It overrides the value 1000 that is specified for the Pod.

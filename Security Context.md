@@ -119,8 +119,7 @@ ps aux
 ```
 The output shows that the processes are running as user 2000. This is the value of runAsUser specified for the Container. It overrides the value 1000 that is specified for the Pod.
 
-## Task 3 : Set capabilities for a Container
-
+### Task 3: Set capabilities for a Container
 With Linux capabilities, you can grant certain privileges to a process without granting all the privileges of the root user. To add or remove Linux capabilities for a Container, include the capabilities field in the securityContext section of the Container manifest.
 
 Lets check, what happens when you don't include a capabilities field.

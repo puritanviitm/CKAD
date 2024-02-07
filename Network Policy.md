@@ -122,8 +122,7 @@ spec:
     - namespaceSelector: {}
       podSelector:
         matchLabels:
-          role: frontend
-		  
+          role: frontend		  
 ```
 Before applying this yaml describe networkpolicies to check rule
 ```

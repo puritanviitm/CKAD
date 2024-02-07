@@ -7,13 +7,13 @@ To specify security settings for a Pod, include the securityContext field in the
 The security settings that you specify for a Pod apply to all Containers in the Pod. Here is a configuration file for a Pod that has a securityContext and an emptyDir volume:
 
 ```
-vi security-context.yaml
+vi security-context1.yaml
 ```
 ```yaml
 apiVersion: v1
 kind: Pod
 metadata:
-  name: security-context-pod
+  name: security-context-pod1
 spec:
   securityContext:
     runAsUser: 1000
@@ -23,7 +23,7 @@ spec:
   - name: sec-ctx-vol
     emptyDir: {}
   containers:
-  - name: sec-ctx-ctr
+  - name: sec-ctx-pod1-ctr
     image: busybox:1.28
     command: [ "sh", "-c", "sleep 1h" ]
     volumeMounts:
@@ -33,15 +33,15 @@ spec:
 ```
 Create the Pod:
 ```
-kubectl apply -f security-context.yaml
+kubectl apply -f security-context1.yaml
 ```
 Verify that the Pod's Container is running:
 ```
-kubectl get pod security-context-pod
+kubectl get pod security-context-pod1
 ```
 Get a shell to the running Container:
 ```
-kubectl exec -it security-context-pod -- sh
+kubectl exec -it security-context-pod1 -- sh
 ```
 In your shell, list the running processes:
 ```
@@ -90,12 +90,12 @@ vi security-context-2.yaml
 apiVersion: v1
 kind: Pod
 metadata:
-  name: security-context-demo-2
+  name: security-context-pod2
 spec:
   securityContext:
     runAsUser: 1000
   containers:
-  - name: sec-ctx-demo-2
+  - name: sec-ctx-pod2
     image: gcr.io/google-samples/node-hello:1.0
     securityContext:
       runAsUser: 2000
@@ -107,11 +107,11 @@ kubectl apply -f security-context-2.yaml
 ```
 Verify that the Pod's Container is running:
 ```
-kubectl get pod security-context-demo-2
+kubectl get pod security-context-pod2
 ```
 Get a shell into the running Container:
 ```
-kubectl exec -it security-context-demo-2 -- sh
+kubectl exec -it security-context-pod2 -- sh
 ```
 In your shell, list the running processes:
 ```

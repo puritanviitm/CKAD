@@ -45,7 +45,7 @@ ping -c 3 <Ip Address of first pod>
 exit
 ```
 
-### Task 2: Network policy with Pod labels denying all traffic
+### Task 2: Ingress Network policy with Pod labels 
 
 Create a nginx pod and service with labels role=backend
 ```
@@ -155,29 +155,4 @@ wget -qO- -T3 http://backend
 ```
 exit
 ```
-
-### Task 2: Using WordPress and MySQL as Deployments
-
-kubectl create ns networkdemo 
-
-kubectl create -f https://s3.ap-south-1.amazonaws.com/files.cloudthat.training/devops/kubernetes-cka/mysql_deploy.yaml -n networkdemo
-
-kubectl create -f https://s3.ap-south-1.amazonaws.com/files.cloudthat.training/devops/kubernetes-cka/wordpress_deploy.yaml -n networkdemo
-
-kubectl get pod,svc -n networkdemo 
-
-vim deny-all.yaml 
-
-apiVersion: networking.k8s.io/v1
-kind: NetworkPolicy
-metadata:
-  name: default-deny-ingress
-  namespace: networkdemo
-spec:
-  podSelector:
-    matchLabels: {}
-  policyTypes:
-  - Ingress
-
-kubectl apply -f deny-all.yaml -n networkdemo
 

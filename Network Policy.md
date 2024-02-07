@@ -45,7 +45,7 @@ ping -c 3 <Ip Address of first pod>
 exit
 ```
 
-### Task 1: Network policy with Pod labels denying all traffic
+### Task 2: Network policy with Pod labels denying all traffic
 
 Create a nginx pod and service with labels role=backend
 ```

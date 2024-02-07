@@ -48,6 +48,10 @@ In your shell, list the running processes:
 ps
 ```
 The output shows that the processes are running as user 1000, which is the value of runAsUser:
+```
+id
+```
+The Output shows the UID, Group ID and all the groups
 
 In your shell, navigate to /data, and list the one directory:
 ```

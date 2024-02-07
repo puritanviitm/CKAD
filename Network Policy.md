@@ -1,5 +1,50 @@
 ## Network Policy
 
+### Task 1: Check the network connectivity between pods in different namespaces
+Create 2 namespaces
+```
+kubectl create ns ns1
+```
+```
+kubectl create ns ns2
+```
+Create pod in first namespace
+```
+kubectl -n ns1 run ns1-pod --image nginx 
+```
+Create pod in second namespace
+```
+kubectl -n ns2 run ns2-pod --image nginx 
+```
+Enter the pod in first namespace  and check its connectivity with a pod in second namespace
+```
+kubectl exec -it -n ns1 ns1-pod -- sh
+```
+Ping with the IP address of second pod
+```
+apt update && apt install iputils-ping
+```
+```
+ping -c 3 <Ip Address of second pod>
+```
+```
+exit
+```
+Enter the pod in second namespace  and check its connectivity with a pod in first namespace
+```
+kubectl -n ns2 exec -it ns2-pod -- sh
+```
+Ping with the IP address of first pod
+```
+apt update && apt install iputils-ping
+```
+```
+ping -c 3 <Ip Address of first pod>
+```
+```
+exit
+```
+
 ### Task 1: Network policy with Pod labels
 
 Create a nginx pod and service with labels role=backend

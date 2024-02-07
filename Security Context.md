@@ -146,7 +146,7 @@ kubectl get pod security-context-pod3
 ```
 Get a shell into the running Container:
 ```
-kubectl exec -it security-context-demo-3 -- sh
+kubectl exec -it security-context-pod3 -- sh
 ```
 In your shell, list the running processes:
 ```

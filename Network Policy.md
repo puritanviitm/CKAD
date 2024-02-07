@@ -45,7 +45,7 @@ ping -c 3 <Ip Address of first pod>
 exit
 ```
 
-### Task 1: Network policy with Pod labels
+### Task 1: Network policy with Pod labels denying all traffic
 
 Create a nginx pod and service with labels role=backend
 ```
@@ -87,7 +87,7 @@ spec:
   ingress: []
 ```
 ```
-kubectl create -f np-deny-all.yml
+kubectl apply -f np-deny-all.yml
 ```
 ```
 kubectl get networkpolicies

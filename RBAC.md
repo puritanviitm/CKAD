@@ -1,5 +1,9 @@
 ## RBAC
 
+RBAC stands for Role-Based Access Control. 
+
+It is a method of regulating access to resources based on the roles of individual users within an organization. With RBAC, you can specify what actions (such as create, read, update, delete) a user or group of users can perform on specific Kubernetes resources.
+
 ### Task 1: Create a new ServiceAccount
 ```
 kubectl get ns

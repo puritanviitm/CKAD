@@ -156,7 +156,7 @@ wget -qO- -T3 http://backend
 exit
 ```
 
-### Task 3: Egrees Policy
+### Task 3: Egress Policy
 ```
 vi egress-policy.yaml
 ```

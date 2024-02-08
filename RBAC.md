@@ -15,11 +15,11 @@ RoleBindings: A role binding binds a role to a user, group, or service account w
 kubectl get ns
 ```
 ```
-kubectl create ns purple
+kubectl create ns ns1
 
 ```
 ```
-kubectl create sa -n purple demo-sa 
+kubectl create sa -n ns1 sa1 
 ```
 ```
 kubectl get ns
@@ -27,18 +27,18 @@ kubectl get ns
 
 #### Create a new Role and RoleBinding 
 ```
-kubectl create role demo-role --verb=list --resource=pods -n purple
+kubectl create role demo-role --verb=list --resource=pods -n ns1
 ```
 ```
-kubectl create rolebinding demo-rb --role=demo-role --serviceaccount=purple:demo-sa -n purple
+kubectl create rolebinding demo-rb --role=demo-role --serviceaccount=ns1:demo-sa -n ns1
 ```
 
 #### Test whether you are able to do a GET request to Kubernetes API 
 ```
-kubectl run test --image=nginx -n purple
+kubectl run pod1 --image=nginx -n ns1
 ```
 ```
-kubectl exec -it -n purple test -- /bin/bash 
+kubectl exec -it -n ns1 test -- /bin/bash 
 ```
 ```
 curl -v --cacert /var/run/secrets/kubernetes.io/serviceaccount/ca.crt -H "Authorization: Bearer $(cat /var/run/secrets/kubernetes.io/serviceaccount/token)" https://kubernetes.default/api/v1/namespaces/purple/pods 

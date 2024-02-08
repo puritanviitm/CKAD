@@ -157,7 +157,20 @@ exit
 ```
 
 ### Task 3: Egress Policy
-
+Create a pod and check the Egress Rules applied to it by default
+```
+kubectl run pod1 --image nginx
+```
+```
+kubectl exec -it pod1 -- bash
+```
+```
+curl https://8.8.8.8
+```
+```
+curl https://yahoo.com
+```
+Create an Egress Policy
 ```
 vi egress-policy.yaml
 ```

@@ -157,6 +157,7 @@ exit
 ```
 
 ### Task 3: Egress Policy
+
 ```
 vi egress-policy.yaml
 ```
@@ -191,7 +192,7 @@ vi  test-pod.yaml
 apiVersion: v1
 kind: Pod
 metadata:
-  name: test-pod
+  name: pod2
 spec:
   containers:
   - name: test-container
@@ -203,7 +204,7 @@ kubectl apply -f test-pod.yaml
 ```
 Exec into the test pod:
 ```
-kubectl exec -it test-pod -- /bin/sh
+kubectl exec -it pod2 -- /bin/sh
 ```
 curl http://8.8.8.8
 ```

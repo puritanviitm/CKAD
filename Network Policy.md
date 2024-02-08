@@ -170,6 +170,9 @@ curl https://8.8.8.8
 ```
 curl https://yahoo.com
 ```
+```
+exit
+```
 Create an Egress Policy
 ```
 vi egress-policy.yaml

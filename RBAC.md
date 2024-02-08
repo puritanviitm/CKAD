@@ -4,7 +4,8 @@ RBAC stands for Role-Based Access Control.
 
 It is a method of regulating access to resources based on the roles of individual users within an organization. With RBAC, you can specify what actions (such as create, read, update, delete) a user or group of users can perform on specific Kubernetes resources.
 
-### Task 1: Create a new ServiceAccount
+### Task 1: Role and Role Binding
+### Task 1A: Create a new ServiceAccount
 ```
 kubectl get ns
 ```
@@ -19,7 +20,7 @@ kubectl create sa -n purple demo-sa
 kubectl get ns
 ```
 
-### Task 2: Create a new Role and RoleBinding 
+### Task 1B: Create a new Role and RoleBinding 
 ```
 kubectl create role demo-role --verb=list --resource=pods -n purple
 ```
@@ -27,7 +28,7 @@ kubectl create role demo-role --verb=list --resource=pods -n purple
 kubectl create rolebinding demo-rb --role=demo-role --serviceaccount=purple:demo-sa -n purple
 ```
 
-### Task 3: Test whether you are able to do a GET request to Kubernetes API 
+### Task 1C: Test whether you are able to do a GET request to Kubernetes API 
 ```
 kubectl run test --image=nginx -n purple
 ```

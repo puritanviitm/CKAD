@@ -38,7 +38,7 @@ kubectl create rolebinding demo-rb --role=demo-role --serviceaccount=ns1:demo-sa
 kubectl run pod1 --image=nginx -n ns1
 ```
 ```
-kubectl exec -it -n ns1 test -- /bin/bash 
+kubectl exec -it -n ns1 pod1 -- /bin/bash 
 ```
 ```
 curl -v --cacert /var/run/secrets/kubernetes.io/serviceaccount/ca.crt -H "Authorization: Bearer $(cat /var/run/secrets/kubernetes.io/serviceaccount/token)" https://kubernetes.default/api/v1/namespaces/ns1/pods 

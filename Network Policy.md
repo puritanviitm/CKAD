@@ -225,7 +225,7 @@ Exec into the pod
 kubectl exec -it pod2 -- /bin/sh
 ```
 ```
-curl http://8.8.8.8
+curl https://8.8.8.8
 ```
 Verify that connections to allowed destinations are successful.
 

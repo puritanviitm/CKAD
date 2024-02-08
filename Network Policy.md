@@ -156,3 +156,85 @@ wget -qO- -T3 http://backend
 exit
 ```
 
+### Task 3: Egrees Policy
+```
+vi egress-policy.yaml
+```
+Create a Kubernetes Network Policy manifest file to define egress rules.
+```yaml
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: allow-outbound
+spec:
+  podSelector: {}
+  policyTypes:
+  - Egress
+  egress:
+  - to:
+    - ipBlock:
+        cidr: 8.8.8.8/32  # Example IP address
+```
+Apply the network policy 
+```
+kubectl apply -f egress-policy.yaml
+```
+Verify that the egress policy has been applied to your pods:
+```
+kubectl get networkpolicies
+```
+Deploy a test pod within the namespace where the network policy is applied.
+```
+vi  test-pod.yaml
+```
+```yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: test-pod
+spec:
+  containers:
+  - name: test-container
+    image: busybox
+    command: ["sleep", "3600"]  # Keep the pod running for testing
+```
+```
+kubectl apply -f test-pod.yaml
+```
+Exec into the test pod:
+```
+kubectl exec -it test-pod -- /bin/sh
+```
+curl http://8.8.8.8
+```
+Verify that connections to allowed destinations are successful.
+
+Attempt to access destinations that are not allowed by the egress policy:
+```
+curl http://yahoo.com
+```
+Verify that connections to disallowed destinations are blocked or result in errors.
+Inspect Network Traffic:
+
+Capture outgoing traffic from the test pod:
+bash
+Copy code
+kubectl exec -it test-pod -- tcpdump -i eth0 -w /tmp/outgoing.pcap
+Trigger traffic from within the pod as described above.
+Stop the packet capture:
+sql
+Copy code
+kubectl exec -it test-pod -- pkill tcpdump
+Transfer the captured file from the pod to your local machine:
+bash
+Copy code
+kubectl cp test-pod:/tmp/outgoing.pcap ./outgoing.pcap
+Analyze the captured traffic using Wireshark to ensure that only allowed traffic is present.
+Check Logs:
+
+Check logs from your network policy provider for any denied egress traffic.
+Check Kubernetes events for any policy violations:
+arduino
+Copy code
+kubectl get events
+

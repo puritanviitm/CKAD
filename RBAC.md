@@ -27,7 +27,10 @@ kubectl get ns
 
 #### Create a new Role and RoleBinding 
 ```
-kubectl create role role1 --verb=list --resource=pods -n ns1
+kubectl create role role1 --verb=list --resource=pods -n ns1 --dry-run=client -o yaml > role.yaml
+```
+```
+kubectl apply -f role.yaml
 ```
 ```
 kubectl create rolebinding role-binding1 --role=role1 --serviceaccount=ns1:sa1 -n ns1
@@ -77,4 +80,48 @@ kubectl exec -it -n ns1 pod2 -- /bin/bash
 curl -v --cacert /var/run/secrets/kubernetes.io/serviceaccount/ca.crt -H "Authorization: Bearer $(cat /var/run/secrets/kubernetes.io/serviceaccount/token)" https://kubernetes.default/api/v1/namespaces/ns1/pods 
 ```
 You should be able to see the details of all the pods
+
+Now try using the `PUT` method to update the pod's resource. If the pod does not exist, Kubernetes will create it.
+`PUT` is equivalent to replace. For creating new Pod we can use `POST`
+
+```
+curl -v \
+  --cacert /var/run/secrets/kubernetes.io/serviceaccount/ca.crt \
+  -H "Authorization: Bearer $(cat /var/run/secrets/kubernetes.io/serviceaccount/token)" \
+  -H "Content-Type: application/json" \
+  -X PUT \
+  -d '{
+    "apiVersion": "v1",
+    "kind": "Pod",
+    "metadata": {
+      "name": "my-pod",
+      "namespace": "ns1"
+    },
+    "spec": {
+      "containers": [
+        {
+          "name": "my-container",
+          "image": "nginx"
+        }
+      ]
+    }
+  }' \
+  https://kubernetes.default/api/v1/namespaces/ns1/pods/my-pod
+```
+You would get Forbidden Error.
+```
+exit
+```
+
+Now edit the role to update the permissions.
+```
+kubectl -n ns1 edit role role1 
+```
+Add the below permissions
+```
+ - create
+ - update
+```
+
+
 

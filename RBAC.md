@@ -269,7 +269,7 @@ spec:
     image: nginx
 ```
 ```
-kubectl apply -f pod-sa.yaml
+kubectl apply -f pod-sa2.yaml
 ```
 ```
 kubectl exec -it -n ns1 pod4 -- /bin/bash 

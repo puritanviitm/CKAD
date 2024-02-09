@@ -357,15 +357,15 @@ vi ClusterRoleBinding.yaml
 apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRoleBinding
 metadata:
-name: admin-user
+  name: cr-binding1
 roleRef:
-apiGroup: rbac.authorization.k8s.io
-kind: ClusterRole
-name: cluster-admin
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: cluster-admin
 subjects:
 - kind: ServiceAccount
-name: admin-user
-namespace: kubernetes-dashboard
+  name: admin-user
+  namespace: kubernetes-dashboard
 ```
 Run the below command to create cluster role binding:
 ```

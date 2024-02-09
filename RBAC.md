@@ -354,6 +354,7 @@ Create a yaml file for cluster role binding using below command and code:
 ```
 vi ClusterRoleBinding.yaml
 ```
+```yaml
 apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRoleBinding
 metadata:

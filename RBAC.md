@@ -122,6 +122,9 @@ Add the below permissions
  - create
  - update
 ```
+```
+curl -v --cacert /var/run/secrets/kubernetes.io/serviceaccount/ca.crt -H "Authorization: Bearer $(cat /var/run/secrets/kubernetes.io/serviceaccount/token)" https://kubernetes.default/api/v1/namespaces/ns1/pods | grep '"name": '
+```
 
 
 

@@ -30,7 +30,7 @@ kubectl get ns
 kubectl create role role1 --verb=list --resource=pods -n ns1
 ```
 ```
-kubectl create rolebinding role-binding1 --role=role1--serviceaccount=ns1:sa1 -n ns1
+kubectl create rolebinding role-binding1 --role=role1 --serviceaccount=ns1:sa1 -n ns1
 ```
 Describe the Rold and role binding
 ```

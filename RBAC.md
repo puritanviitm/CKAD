@@ -62,7 +62,7 @@ spec:
 kubectl apply -f pod-sa.yaml
 ```
 ```
-kubectl exec -it -n purple test-01 -- /bin/bash 
+kubectl exec -it -n ns1 pod2 -- /bin/bash 
 ```
 ```
 curl -v --cacert /var/run/secrets/kubernetes.io/serviceaccount/ca.crt -H "Authorization: Bearer $(cat /var/run/secrets/kubernetes.io/serviceaccount/token)" https://kubernetes.default/api/v1/namespaces/ns1/pods 

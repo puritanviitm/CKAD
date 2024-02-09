@@ -341,8 +341,8 @@ vi ServiceAccount.yaml
 apiVersion: v1
 kind: ServiceAccount
 metadata:
-name: admin-user
-namespace: kubernetes-dashboard
+  name: admin-user
+  namespace: kubernetes-dashboard
 ```
 
 Apply the YAML file with the command:

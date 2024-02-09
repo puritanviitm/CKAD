@@ -81,6 +81,8 @@ curl -v --cacert /var/run/secrets/kubernetes.io/serviceaccount/ca.crt -H "Author
 ```
 You should be able to see the details of all the pods
 
+#### Test whether you are able to do create a new pod 
+
 For creating new Pod we can use `POST`
 
 ```

@@ -44,8 +44,13 @@ kubectl run pod1 --image=nginx -n ns1
 ```
 kubectl exec -it -n ns1 pod1 -- /bin/bash 
 ```
+Make an API call to list all the pods in the Namespace ns1
 ```
 curl -v --cacert /var/run/secrets/kubernetes.io/serviceaccount/ca.crt -H "Authorization: Bearer $(cat /var/run/secrets/kubernetes.io/serviceaccount/token)" https://kubernetes.default/api/v1/namespaces/ns1/pods 
+```
+The API call is forbidden
+```
+exit
 ```
 ```
 vi pod-sa.yaml

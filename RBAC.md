@@ -27,10 +27,10 @@ kubectl get ns
 
 #### Create a new Role and RoleBinding 
 ```
-kubectl create role demo-role --verb=list --resource=pods -n ns1
+kubectl create role role1 --verb=list --resource=pods -n ns1
 ```
 ```
-kubectl create rolebinding demo-rb --role=demo-role --serviceaccount=ns1:demo-sa -n ns1
+kubectl create rolebinding role-binding1 --role=role1--serviceaccount=ns1:sa1 -n ns1
 ```
 
 #### Test whether you are able to do a GET request to Kubernetes API 

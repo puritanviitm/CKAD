@@ -235,10 +235,10 @@ kubectl describe clusterrolebindings.rbac.authorization.k8s.io my-user-binding
 
 #### Test whether you are able to do a GET request to Kubernetes API 
 ```
-kubectl run pod1 --image=nginx -n ns1
+kubectl run pod3 --image=nginx -n ns1
 ```
 ```
-kubectl exec -it -n ns1 pod1 -- /bin/bash 
+kubectl exec -it -n ns1 pod3 -- /bin/bash 
 ```
 Make an API call to list all the pods in the Namespace ns1
 ```
@@ -260,7 +260,7 @@ vi pod-sa.yaml
 apiVersion: v1
 kind: Pod
 metadata:
-  name: pod2
+  name: pod4
   namespace: ns1
 spec:
   serviceAccountName: sa1
@@ -272,7 +272,7 @@ spec:
 kubectl apply -f pod-sa.yaml
 ```
 ```
-kubectl exec -it -n ns1 pod2 -- /bin/bash 
+kubectl exec -it -n ns1 pod4 -- /bin/bash 
 ```
 Make an API call to list all the pods in the Namespace ns1
 ```

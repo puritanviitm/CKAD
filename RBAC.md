@@ -63,7 +63,7 @@ cat token
 To cross-verify whether the right token has been passed to the pod, perform the below steps on a new tab.
 Get the token associated with sa1.
 ```
-kubectl get secret $(kubectl get serviceaccount sa1 -n ns -o jsonpath='{.secrets[0].name}') -n ns -o jsonpath='{.data.token}' | base64 --decode
+kubectl get secret $(kubectl get serviceaccount sa1 -n ns1 -o jsonpath='{.secrets[0].name}') -n ns1 -o jsonpath='{.data.token}' | base64 --decode
 ```
 Decode the token values obtained from Kubernetes using base64 --decode. Let's assume the decoded tokens are $TOKEN_SA1.
 

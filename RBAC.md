@@ -214,7 +214,7 @@ metadata:
   name: my-user-binding
 subjects:
 - kind: ServiceAccount
-  name: sa1
+  name: sa2
   namespace: ns1
 roleRef:
   kind: ClusterRole

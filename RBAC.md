@@ -50,10 +50,10 @@ vi pod-sa.yaml
 apiVersion: v1
 kind: Pod
 metadata:
-  name: test-01
-  namespace: purple
+  name: pod2
+  namespace: ns1
 spec:
-  serviceAccountName: demo-sa
+  serviceAccountName: sa1
   containers:
   - name: my-container
     image: nginx

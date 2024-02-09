@@ -60,6 +60,23 @@ cat ca.crt
 ```
 cat token
 ```
+To cross-verify whether the right token has been passed to the pod, perform the below steps on a new tab.
+Get the token associated with sa1.
+```
+kubectl get secret $(kubectl get serviceaccount sa1 -n ns -o jsonpath='{.secrets[0].name}') -n ns -o jsonpath='{.data.token}' | base64 --decode
+```
+Decode the token values obtained from Kubernetes using base64 --decode. Let's assume the decoded tokens are $TOKEN_SA1.
+
+Now, inside the pod (pod1), you can compare the token value mounted inside the pod with the decoded token values:
+
+Compare the token values
+```
+if [ "$(cat /var/run/secrets/kubernetes.io/serviceaccount/token)" == "$TOKEN_SA1" ]; then
+    echo "Service account sa1 has been passed to the pod."
+else
+    echo "Unknown service account token."
+fi
+```
 ```
 cat namespace
 ```

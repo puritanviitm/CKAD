@@ -115,7 +115,7 @@ exit
 
 Now edit the role to update the permissions.
 ```
-kubectl -n ns1 edit role role1 
+vi role.yaml 
 ```
 Add the below permissions
 ```

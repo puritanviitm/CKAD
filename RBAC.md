@@ -164,4 +164,123 @@ curl -v --cacert /var/run/secrets/kubernetes.io/serviceaccount/ca.crt -H "Author
 exit
 ```
 
+### Task 2: Cluster Role and Cluster Role Binding
+
+Cluster Role : A ClusterRole is a set of permissions that can be applied across the entire Kubernetes cluster.ClusterRoles are not namespace-scoped; they apply cluster-wide. This means that permissions granted by a ClusterRole affect resources in all namespaces.
+
+Cluster Role Binding: A ClusterRoleBinding binds a ClusterRole to a set of subjects (users, groups, or service accounts) across the entire cluster. It effectively grants the permissions defined in the ClusterRole to the subjects specified in the binding. Similar to ClusterRoles, ClusterRoleBindings are also cluster-wide and apply across all namespaces.
+
+#### Create a new ServiceAccount
+```
+kubectl create ns ns1
+```
+```
+kubectl create sa -n ns1 sa2
+```
+```
+kubectl get ns
+```
+
+#### Create a new Cluster Role and Cluster Role Binding 
+
+ ```
+vi cluster-role.yaml
+```
+```yaml
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  name: pod-reader
+rules:
+- apiGroups: [""]
+  resources: ["pods"]
+  verbs: ["get", "list"]
+```
+```
+kubectl apply -f cluster-role.yaml
+```
+```
+vi cluster-role-binding.yaml
+```
+```yaml
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  name: my-user-binding
+subjects:
+- kind: ServiceAccount
+  name: sa1
+  namespace: ns1
+roleRef:
+  kind: ClusterRole
+  name: pod-readed
+  apiGroup: rbac.authorization.k8s.io
+
+```
+```
+kubectl apply -f cluster-role-binding.yaml
+```
+Describe the Cluster Role and Cluster role binding
+```
+kubectl describe clusterrole pod-reader 
+```
+```
+kubectl describe clusterrolebindings.rbac.authorization.k8s.io my-user-binding
+```
+
+#### Test whether you are able to do a GET request to Kubernetes API 
+```
+kubectl run pod1 --image=nginx -n ns1
+```
+```
+kubectl exec -it -n ns1 pod1 -- /bin/bash 
+```
+Make an API call to list all the pods in the Namespace ns1
+```
+curl -v --cacert /var/run/secrets/kubernetes.io/serviceaccount/ca.crt -H "Authorization: Bearer $(cat /var/run/secrets/kubernetes.io/serviceaccount/token)" https://kubernetes.default/api/v1/namespaces/ns1/pods | grep '"name": "pod'
+```
+The API call is forbidden
+
+Make an API call to list all the pods in the Namespace default
+```
+curl -v --cacert /var/run/secrets/kubernetes.io/serviceaccount/ca.crt -H "Authorization: Bearer $(cat /var/run/secrets/kubernetes.io/serviceaccount/token)" https://kubernetes.default/api/v1/namespaces/default/pods | grep '"name": "pod'
+```
+```
+exit
+```
+```
+vi pod-sa.yaml
+```
+```yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: pod2
+  namespace: ns1
+spec:
+  serviceAccountName: sa1
+  containers:
+  - name: my-container
+    image: nginx
+```
+```
+kubectl apply -f pod-sa.yaml
+```
+```
+kubectl exec -it -n ns1 pod2 -- /bin/bash 
+```
+Make an API call to list all the pods in the Namespace ns1
+```
+curl -v --cacert /var/run/secrets/kubernetes.io/serviceaccount/ca.crt -H "Authorization: Bearer $(cat /var/run/secrets/kubernetes.io/serviceaccount/token)" https://kubernetes.default/api/v1/namespaces/ns1/pods | grep '"name": "pod'
+```
+The API call is successful
+
+Make an API call to list all the pods in the Namespace default
+```
+curl -v --cacert /var/run/secrets/kubernetes.io/serviceaccount/ca.crt -H "Authorization: Bearer $(cat /var/run/secrets/kubernetes.io/serviceaccount/token)" https://kubernetes.default/api/v1/namespaces/default/pods | grep '"name": "pod'
+```
+```
+exit
+```
+
 

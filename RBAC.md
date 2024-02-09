@@ -218,7 +218,7 @@ subjects:
   namespace: ns1
 roleRef:
   kind: ClusterRole
-  name: pod-readed
+  name: pod-reader
   apiGroup: rbac.authorization.k8s.io
 
 ```

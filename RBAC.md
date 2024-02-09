@@ -32,6 +32,10 @@ kubectl create role role1 --verb=list --resource=pods -n ns1
 ```
 kubectl create rolebinding role-binding1 --role=role1--serviceaccount=ns1:sa1 -n ns1
 ```
+Describe the Rold and role binding
+```
+kubectl -n ns1 describe role,rolebindings.rbac.authorization.k8s.io 
+```
 
 #### Test whether you are able to do a GET request to Kubernetes API 
 ```

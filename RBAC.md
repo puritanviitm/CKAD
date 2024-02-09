@@ -254,7 +254,7 @@ curl -v --cacert /var/run/secrets/kubernetes.io/serviceaccount/ca.crt -H "Author
 exit
 ```
 ```
-vi pod-sa.yaml
+vi pod-sa2.yaml
 ```
 ```yaml
 apiVersion: v1
@@ -263,7 +263,7 @@ metadata:
   name: pod4
   namespace: ns1
 spec:
-  serviceAccountName: sa1
+  serviceAccountName: sa2
   containers:
   - name: my-container
     image: nginx

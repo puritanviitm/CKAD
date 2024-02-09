@@ -81,15 +81,14 @@ curl -v --cacert /var/run/secrets/kubernetes.io/serviceaccount/ca.crt -H "Author
 ```
 You should be able to see the details of all the pods
 
-Now try using the `PUT` method to update the pod's resource. If the pod does not exist, Kubernetes will create it.
-`PUT` is equivalent to replace. For creating new Pod we can use `POST`
+For creating new Pod we can use `POST`
 
 ```
 curl -v \
   --cacert /var/run/secrets/kubernetes.io/serviceaccount/ca.crt \
   -H "Authorization: Bearer $(cat /var/run/secrets/kubernetes.io/serviceaccount/token)" \
   -H "Content-Type: application/json" \
-  -X PUT \
+  -X POST \
   -d '{
     "apiVersion": "v1",
     "kind": "Pod",
@@ -106,7 +105,8 @@ curl -v \
       ]
     }
   }' \
-  https://kubernetes.default/api/v1/namespaces/ns1/pods/my-pod
+  https://kubernetes.default/api/v1/namespaces/ns1/pods
+
 ```
 You would get Forbidden Error.
 ```
@@ -129,6 +129,32 @@ kubectl replace -f role.yaml --force
 ```
 kubectl exec -it -n ns1 pod2 -- /bin/bash
 ```
+Create a pod
+```
+curl -v \
+  --cacert /var/run/secrets/kubernetes.io/serviceaccount/ca.crt \
+  -H "Authorization: Bearer $(cat /var/run/secrets/kubernetes.io/serviceaccount/token)" \
+  -H "Content-Type: application/json" \
+  -X POST \
+  -d '{
+    "apiVersion": "v1",
+    "kind": "Pod",
+    "metadata": {
+      "name": "my-pod",
+      "namespace": "ns1"
+    },
+    "spec": {
+      "containers": [
+        {
+          "name": "my-container",
+          "image": "nginx"
+        }
+      ]
+    }
+  }' \
+  https://kubernetes.default/api/v1/namespaces/ns1/pods
+```
+Retrieve the Pod details
 ```
 curl -v --cacert /var/run/secrets/kubernetes.io/serviceaccount/ca.crt -H "Authorization: Bearer $(cat /var/run/secrets/kubernetes.io/serviceaccount/token)" https://kubernetes.default/api/v1/namespaces/ns1/pods | grep '"name":'
 ```

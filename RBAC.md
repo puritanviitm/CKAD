@@ -81,6 +81,11 @@ curl -v --cacert /var/run/secrets/kubernetes.io/serviceaccount/ca.crt -H "Author
 ```
 You should be able to see the details of all the pods
 
+Access to Pods in deafult namespace is forbidden
+```
+curl -v --cacert /var/run/secrets/kubernetes.io/serviceaccount/ca.crt -H "Authorization: Bearer $(cat /ar/run/secrets/kubernetes.io/serviceaccount/token)" https://kubernetes.default/api/v1/namespaces/default/pods
+```
+
 #### Test whether you are able to do a POST request to Kubernetes API (create a new pod)
 
 For creating new Pod we can use `POST`

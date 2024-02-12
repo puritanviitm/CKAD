@@ -67,7 +67,6 @@ spec:
   containers:
   - name: nginx
     image: nginx
-    imagePullPolicy: IfNotPresent
   nodeName: {node-name / hostname }
 ```
 ```

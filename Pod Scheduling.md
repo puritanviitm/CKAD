@@ -173,7 +173,7 @@ vi pod-nginx-preferred-affinity.yaml
 apiVersion: v1
 kind: Pod
 metadata:
-  name: nginx
+  name: nginx1
 spec:
   affinity:
     nodeAffinity:

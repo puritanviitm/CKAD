@@ -201,9 +201,10 @@ kubectl get pods --output=wide
 
 ### Task 4: Pod Scheduling using Pod Affinity
 
-
+```
 vi depend-pod.yaml
-
+```
+```yaml
 apiVersion: v1
 kind: Pod
 metadata:
@@ -214,15 +215,20 @@ spec:
   containers:
   - name: pa-nginx-ctr1
     image: nginx
-
+```
+```
 kubectl create -f depend-pod.yaml
-kubectl get pods
+```
+```
+kubectl get pods -o wide
 
----------------------------------------------------------------------
-Task 2.1: create pod with pod affinity
----------------------------------------------------------------------
+```
+
+Now create pod with Pod Affinity
+```
 vi aff-pa-pod2.yaml
-
+```
+```yaml
 apiVersion: v1
 kind: Pod
 metadata:
@@ -241,18 +247,20 @@ spec:
             values:
             - pa-nginx-app
         topologyKey: kubernetes.io/hostname
-
-kubectl create -f pod-affinity.yaml
-
+```
+```
+kubectl apply -f pod-affinity.yaml
+```
+```
 kubectl get pods -o wide
-both pod are in same node
+```
+Notice both the Pods are in the same Node
 
----------------------------------------------------------------------
-Task 2.3: pod anti affinity
----------------------------------------------------------------------
-
+Now create a pod anti affinity
+```
 vi pod-antiaff.yaml
-
+```
+```yaml
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -280,13 +288,15 @@ spec:
       containers:
       - name: nginx
         image: nginx
-
+```
 kubectl create -f  pod-antiaff.yaml
+```
+```
 kubectl get pod -o wide 
-
-
+```
+```
 kubectl delete -f  pod-antiaff.yaml
- 
+``` 
 
 
 

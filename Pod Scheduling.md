@@ -48,7 +48,7 @@ Either change the Label on the Node or the Node Selector specifications in the p
 
 Changing the Label on the node. For this Unlabel the Node and mark it with the correct label
 ```
-kubectl label nodes node1 disktype-
+kubectl label nodes node1 disk type-
 ```
 ```
 kubectl label nodes node1 disktype=ssd
@@ -60,6 +60,10 @@ kubectl get nodes --show-labels | grep "disktype=ssd"
 List the pods. You will see the the Pod has gone into the running state.
 ```
 kubectl get po -o wide
+```
+Before signing off, remove the label
+```
+kubectl label nodes node1 disk type-
 ```
 
 

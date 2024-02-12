@@ -97,23 +97,68 @@ Check your pod is running on the targeted node
 kubectl get pods -o wide 
 ```
 
+### Task 3: Pod Scheduling using Node Affinity 
 
+Node affinity is conceptually similar to nodeSelector, allowing you to constrain which nodes your Pod can be scheduled on based on node label
 
-
-
-### Task 3: Pod Scheduling using Node Affinity
+List the nodes in your cluster, along with their labels:
 ```
-vi node-aff-pref.yaml
+kubectl get nodes --show-labels
+```
+Choose one of your nodes, and add a label to it. Where <your-node-name> is the name of your chosen node.
+```
+kubectl label nodes node1 disktype=ssd
+```
+Verify that your chosen node has a disktype=ssd label
+```
+kubectl get nodes --show-labels
+```
+Schedule a Pod using required node affinity.
+
+This manifest describes a Pod that has a requiredDuringSchedulingIgnoredDuringExecution node affinity,disktype: ssd. This means that the pod will get scheduled only on a node that has a disktype=ssd label.
+
+```
+vi pod-nginx-required-affinity.yaml
 ```
 ```yaml
 apiVersion: v1
 kind: Pod
 metadata:
-  name: na-nginx-pod1
+  name: nginx
 spec:
+  affinity:
+    nodeAffinity:
+      requiredDuringSchedulingIgnoredDuringExecution:
+        nodeSelectorTerms:
+        - matchExpressions:
+          - key: disktype
+            operator: In
+            values:
+            - ssd            
   containers:
-  - name: na-nginx-ctr1
+  - name: nginx
     image: nginx
+    imagePullPolicy: IfNotPresent
+```
+Apply the manifest to create a Pod that is scheduled onto your chosen node
+```
+kubectl apply -f pod-nginx-required-affinity.yaml
+```
+Verify that the pod is running on your chosen node:
+```
+kubectl get pods --output=wide
+```
+
+This manifest describes a Pod that has a preferredDuringSchedulingIgnoredDuringExecution node affinity,disktype: ssd. This means that the pod will prefer a node that has a disktype=ssd label.
+```
+vi pod-nginx-preferred-affinity.yaml
+```
+```yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: nginx
+spec:
   affinity:
     nodeAffinity:
       preferredDuringSchedulingIgnoredDuringExecution:
@@ -123,55 +168,20 @@ spec:
           - key: disktype
             operator: In
             values:
-            - ssd
-```
-```
-kubectl apply -f node-aff-pref.yaml
-```
-```
-kubectl get pods -o wide
-```
-Remove node label 
-```
-kubectl label nodes <node_name> disktype-
-```
-Deploy same pod again it is getting deployed
-
-Task 1.2: required during scheduling
-
-remove label first 
-kubectl label nodes <node_name> disktype-
-
-
-vi aff-na-pod2.yaml
-
-apiVersion: v1
-kind: Pod
-metadata:
-  name: na-nginx-pod2
-spec:
+            - ssd          
   containers:
-  - name: na-nginx-ctr2
+  - name: nginx
     image: nginx
-  affinity:
-    nodeAffinity:
-      requiredDuringSchedulingIgnoredDuringExecution:
-        nodeSelectorTerms:
-        - matchExpressions:
-          - key: disktype
-            operator: In
-            values:
-            - ssd
-
-kubectl create -f aff-na-pod2.yaml
-
-pod is strictly looking for labeled node
-
-kubectl get pods -o wide
-kubectl label nodes <node_name> disktype=ssd
-
-once label is added pod will deployed
-
+    imagePullPolicy: IfNotPresent
+```
+Apply the manifest to create a Pod that is scheduled onto your chosen node:
+```
+kubectl apply -f pod-nginx-preferred-affinity.yaml
+```
+Verify that the pod is running on your chosen node:
+```
+kubectl get pods --output=wide
+```
 
 ### Task 4: Pod Scheduling using Pod Affinity
 

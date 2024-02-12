@@ -48,7 +48,7 @@ Either change the Label on the Node or the Node Selector specifications in the p
 
 Changing the Label on the node. For this Unlabel the Node and mark it with the correct label
 ```
-kubectl label nodes node1 disk type-
+kubectl label nodes node1 disktype-
 ```
 ```
 kubectl label nodes node1 disktype=ssd

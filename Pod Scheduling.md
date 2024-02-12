@@ -141,7 +141,9 @@ Apply the manifest to create a Pod that is scheduled onto your chosen node
 kubectl apply -f pod-nginx-required-affinity.yaml
 ```
 Check if the pod is running. If not describe the pod
-
+```
+kubectl get po -o wide
+```
 Choose one of your nodes, and add a label to it. Where <your-node-name> is the name of your chosen node.
 ```
 kubectl label nodes node1 disktype=ssd

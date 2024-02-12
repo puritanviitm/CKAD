@@ -217,7 +217,7 @@ spec:
     image: nginx
 ```
 ```
-kubectl create -f depend-pod.yaml
+kubectl apply -f depend-pod.yaml
 ```
 ```
 kubectl get pods -o wide

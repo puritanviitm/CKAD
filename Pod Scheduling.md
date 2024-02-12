@@ -290,7 +290,7 @@ spec:
         image: nginx
 ```
 ```
-kubectl create -f  pod-antiaff.yaml
+kubectl apply -f  pod-antiaff.yaml
 ```
 ```
 kubectl get pod -o wide 

@@ -1,4 +1,4 @@
-## Node Labelling and Constraining pods in Kubernetes
+## Assigning Pods to Nodes
 
 ### Task 1: Deploy pod in specific node based on node-name / hostname
 ```

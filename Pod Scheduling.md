@@ -109,14 +109,6 @@ List the nodes in your cluster, along with their labels:
 ```
 kubectl get nodes --show-labels
 ```
-Choose one of your nodes, and add a label to it. Where <your-node-name> is the name of your chosen node.
-```
-kubectl label nodes node1 disktype=ssd
-```
-Verify that your chosen node has a disktype=ssd label
-```
-kubectl get nodes --show-labels
-```
 Schedule a Pod using required node affinity.
 
 This manifest describes a Pod that has a requiredDuringSchedulingIgnoredDuringExecution node affinity,disktype: ssd. This means that the pod will get scheduled only on a node that has a disktype=ssd label.
@@ -147,6 +139,16 @@ spec:
 Apply the manifest to create a Pod that is scheduled onto your chosen node
 ```
 kubectl apply -f pod-nginx-required-affinity.yaml
+```
+Check if the pod is running. If not describe the pod
+
+Choose one of your nodes, and add a label to it. Where <your-node-name> is the name of your chosen node.
+```
+kubectl label nodes node1 disktype=ssd
+```
+Verify that your chosen node has a disktype=ssd label
+```
+kubectl get nodes --show-labels
 ```
 Verify that the pod is running on your chosen node:
 ```

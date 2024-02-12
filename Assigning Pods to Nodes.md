@@ -78,7 +78,6 @@ kubectl get pods -o wide
 
 Check your pod is running on the targeted node
 
-### Task 3: Comparing NodeSelector and Nodename for higher priority
 
 
  

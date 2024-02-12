@@ -46,7 +46,7 @@ The Pod goes into the pending state as the node selector does not match.
 
 Either change the Label on the Node or the Node Selector specifications in the pod.
 
-Unlabel the POD and mark it with the coreect label
+Changing the Label on the node. For this Unlabel the Node and mark it with the correct label
 ```
 kubectl label nodes node1 disktype-
 ```

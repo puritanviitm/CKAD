@@ -269,7 +269,7 @@ spec:
   selector:
     matchLabels:
       app: nginx
-  replicas: 1
+  replicas: 3
   template:
     metadata:
       labels:

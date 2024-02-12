@@ -85,5 +85,7 @@ kubectl label nodes node1 disktype-
 
 
 
+
+
  
 

@@ -1,10 +1,10 @@
-Lab 13: Advanced Pod Scheduling
+## Advanced Pod Scheduling
 
----------------------------------------------------------------------
-Task 1: Node Affinity
----------------------------------------------------------------------
+### Task 1: Node Affinity
+```
 vi node-aff-pref.yaml
-
+```
+```yaml
 apiVersion: v1
 kind: Pod
 metadata:
@@ -23,14 +23,18 @@ spec:
             operator: In
             values:
             - ssd
-
+```
+```
 kubectl apply -f node-aff-pref.yaml
+```
+```
 kubectl get pods -o wide
-
+```
 Remove node label 
-
+```
 kubectl label nodes <node_name> disktype-
-deploy same pod again it is getting deployed
+```
+Deploy same pod again it is getting deployed
 
 Task 1.2: required during scheduling
 

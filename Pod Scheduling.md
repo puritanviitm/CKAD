@@ -1,6 +1,6 @@
-## Assigning Pods to Nodes
+## Pod Scheduling
 
-### Task 1: Node labels
+### Task 1: Pod Scheduling using Node labels
 
 Node Labels: Like many other Kubernetes objects, nodes have labels. You can attach labels manually. Kubernetes also populates a standard set of labels on all nodes in a cluster.
 
@@ -43,7 +43,7 @@ kubectl apply -f nlns-pod.yaml
 kubectl get pods -o wide
 ```
 
-### Task 2: Node Name / Host Name
+### Task 2: Pod Scheduling using Node Name / Host Name
 
 Node Name is a more direct form of node selection than affinity or nodeSelector. nodeName is a field in the Pod spec. If the nodeName field is not empty, the scheduler ignores the Pod and the kubelet on the named node tries to place the Pod on that node. Using nodeName overrules using nodeSelector or affinity and anti-affinity rules.
 

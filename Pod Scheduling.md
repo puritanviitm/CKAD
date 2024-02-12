@@ -289,6 +289,7 @@ spec:
       - name: nginx
         image: nginx
 ```
+```
 kubectl create -f  pod-antiaff.yaml
 ```
 ```

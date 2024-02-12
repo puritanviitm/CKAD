@@ -42,7 +42,7 @@ kubectl apply -f nlns-pod.yaml
 kubectl get pods -o wide
 ```
 
-### Task 2: Deploy pod in specific node based on node-name / hostname
+### Task 2: Node Name / Host Name
 
 ```
 vi node-name.yaml

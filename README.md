@@ -24,7 +24,7 @@
 * [Lab-9: Security Context](https://github.com/Mehar-Nafis/CKAD/blob/main/Security%20Context.md)
 * [Lab-10: Network Policy](https://github.com/Mehar-Nafis/CKAD/blob/main/Network%20Policy.md)
 * [Lab-11: RBAC](https://github.com/Mehar-Nafis/CKAD/blob/main/RBAC.md)
-* [Lab-12: Assigning Pods to Nodess](https://github.com/Mehar-Nafis/CKAD/blob/main/Assigning%20Pods%20to%20Nodes.md)
+* [Lab-12: Pod Sheduling](https://github.com/Mehar-Nafis/CKAD/blob/main/Pod%20Scheduling.md)
 * [Lab-13: Advanced Pod Scheduling](https://github.com/Mehar-Nafis/CKAD/blob/main/Advanced%20Pod%20Scheduling.md)
 * [Lab-14: Helm](https://github.com/Mehar-Nafis/CKAD/blob/main/Helm.md)
 * [Reference Links](https://github.com/Mehar-Nafis/CKAD/blob/main/Reference%20Links.md)

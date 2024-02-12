@@ -25,6 +25,6 @@
 * [Lab-10: Network Policy](https://github.com/Mehar-Nafis/CKAD/blob/main/Network%20Policy.md)
 * [Lab-11: RBAC](https://github.com/Mehar-Nafis/CKAD/blob/main/RBAC.md)
 * [Lab-12: Pod Sheduling](https://github.com/Mehar-Nafis/CKAD/blob/main/Pod%20Scheduling.md)
-* [Lab-14: Helm](https://github.com/Mehar-Nafis/CKAD/blob/main/Helm.md)
+* [Lab-13: Helm](https://github.com/Mehar-Nafis/CKAD/blob/main/Helm.md)
 * [Reference Links](https://github.com/Mehar-Nafis/CKAD/blob/main/Reference%20Links.md)
 * [CKAD Exercises](https://github.com/Mehar-Nafis/CKAD/blob/main/CKAD%20Exercises.md)

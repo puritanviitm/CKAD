@@ -78,6 +78,11 @@ kubectl get pods -o wide
 
 Check your pod is running on the targeted node
 
+Command to Unlabel your node.
+```
+kubectl label nodes node1 disktype-
+```
+
 
 
  

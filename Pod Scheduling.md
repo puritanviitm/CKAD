@@ -92,10 +92,11 @@ spec:
 ```
 kubectl apply -f node-name.yaml
 ```
+Check your pod is running on the targeted node
 ```
 kubectl get pods -o wide 
 ```
-Check your pod is running on the targeted node
+
 
 
 

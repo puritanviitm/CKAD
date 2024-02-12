@@ -71,7 +71,7 @@ spec:
   nodeName: {node-name / hostname }
 ```
 ```
-kubectl create -f node-name.yaml
+kubectl apply -f node-name.yaml
 ```
 ```
 kubectl get pods -o wide 

@@ -12,7 +12,7 @@ kubectl get nodes --show-labels
 ```
 Label the node
 ```
-kubectl label nodes <node_name> disktype=ssd1
+kubectl label nodes node1 disktype=ssd1
 ```
 List your nodes to check labels 
 ```
@@ -51,7 +51,7 @@ Changing the Label on the node. For this Unlabel the Node and mark it with the c
 kubectl label nodes node1 disktype-
 ```
 ```
-kubectl label nodes <node_name> disktype=ssd
+kubectl label nodes node1 disktype=ssd
 ```
 List your nodes to check labels 
 ```

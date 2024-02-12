@@ -12,11 +12,11 @@ kubectl get nodes --show-labels
 ```
 Label the node
 ```
-kubectl label nodes <node_name> disktype=ssd
+kubectl label nodes <node_name> disktype=ssd1
 ```
 List your nodes to check labels 
 ```
-kubectl get nodes --show-labels | grep "disktype=ssd"
+kubectl get nodes --show-labels | grep "disktype=ssd1"
 ```
 ```
 vi nlns-pod.yaml
@@ -33,7 +33,7 @@ spec:
   - name: nlns-nginx-ctr
     image: nginx
   nodeSelector:
-    disktype: ssd
+    disktype: sdd
 
 ```
 ```
@@ -42,6 +42,26 @@ kubectl apply -f nlns-pod.yaml
 ```
 kubectl get pods -o wide
 ```
+The Pod goes into the pending state as the node selector does not match.
+
+Either change the Label on the Node or the Node Selector specifications in the pod.
+
+Unlabel the POD and mark it with the coreect label
+```
+kubectl label nodes node1 disktype-
+```
+```
+kubectl label nodes <node_name> disktype=ssd
+```
+List your nodes to check labels 
+```
+kubectl get nodes --show-labels | grep "disktype=ssd"
+```
+List the pods. You will see the the Pod has gone into the running state.
+```
+kubectl get po -o wide
+```
+
 
 ### Task 2: Pod Scheduling using Node Name / Host Name
 
@@ -78,10 +98,7 @@ kubectl get pods -o wide
 
 Check your pod is running on the targeted node
 
-Command to Unlabel your node.
-```
-kubectl label nodes node1 disktype-
-```
+
 
 
 

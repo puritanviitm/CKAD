@@ -226,7 +226,7 @@ kubectl get pods -o wide
 
 Now create pod with Pod Affinity
 ```
-vi aff-pa-pod2.yaml
+vi pod-affinity.yaml
 ```
 ```yaml
 apiVersion: v1

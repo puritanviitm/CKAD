@@ -295,9 +295,7 @@ kubectl apply -f  pod-antiaff.yaml
 ```
 kubectl get pod -o wide 
 ```
-```
-kubectl delete -f  pod-antiaff.yaml
-``` 
+
 
 
 

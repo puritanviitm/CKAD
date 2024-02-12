@@ -156,6 +156,14 @@ Verify that the pod is running on your chosen node:
 ```
 kubectl get pods --output=wide
 ```
+Remove the label on the node
+```
+kubectl label nodes node1 disktype-
+```
+Check if this effects the Pod status.
+```
+kubectl get po -o wide
+```
 
 This manifest describes a Pod that has a preferredDuringSchedulingIgnoredDuringExecution node affinity,disktype: ssd. This means that the pod will prefer a node that has a disktype=ssd label.
 ```

@@ -10,6 +10,7 @@ List node labels
 ```
 kubectl get nodes --show-labels
 ```
+Label the node
 ```
 kubectl label nodes <node_name> disktype=ssd
 ```

@@ -1,6 +1,6 @@
 ## Helm
 
-### Task 1:  Helm Commands
+### Task 1:  Commonly used Helm Commands
 
 To check the version of Helm installed
 ```

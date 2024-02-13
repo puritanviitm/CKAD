@@ -45,6 +45,10 @@ helm repo remove stable-charts
 ```
 helm repo remove bitnami
 ```
+To remove Helm package manager
+```
+sudo apt-get remove helm
+```
 
 ### Task 2:  Installing WordPress with Helm
 

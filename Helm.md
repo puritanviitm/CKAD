@@ -34,6 +34,10 @@ To uninstall the WordPress application deployed using Helm with the release name
 ```
 helm uninstall my-wordpress
 ```
+To download the Bitnami WordPress Helm chart to your local machine.
+```
+helm fetch bitnami/wordpress
+```
 
 
 ### Task 2:  Installing WordPress with Helm

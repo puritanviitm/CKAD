@@ -347,6 +347,10 @@ Taint Node1 to NoSchedule
 ```
 kubectl taint nodes node1 key1=value1:NoSchedule
 ```
+Replace pod1
+```
+kubectl replace -f pod.yaml --force
+```
 Add toleration to the same pod and replace
 ```
 vi pod.yaml

@@ -351,6 +351,8 @@ Replace pod1
 ```
 kubectl replace -f pod.yaml --force
 ```
+The Pod goes in a Pending State, since it has NodeSelector mapping it to  Node1 but the Node1 is tainted to NoSchedule
+
 Add toleration to the same pod and replace
 ```
 vi pod.yaml

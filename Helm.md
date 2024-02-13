@@ -93,7 +93,7 @@ ls
 ``` 
 Extract the compressed file using the below command.
 ```
-tar -xvzf wordpress-12.2.1.tgz
+tar -xvzf wordpress-19.2.6.tgz
 ```
 Now, deploy the WordPress using helm install command.  This will set up the pods and services for WordPress.
 ```

@@ -307,7 +307,7 @@ Taints and tolerations work together to ensure that pods are not scheduled onto 
 
 Deploy some pods and check on which nodes they are getting scheduled 
 ```
-kubectl run podA --image nginx
+kubectl run pod-1 --image nginx
 ```
 ```
 kubectl get po -o wide

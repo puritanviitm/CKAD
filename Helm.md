@@ -1,6 +1,44 @@
-## HELM : Installing WordPress with Helm
+## Helm
 
-### Helm setup
+### Task 1:  Helm Commands
+
+To check the version of Helm installed
+```
+helm version
+```
+
+To add a Helm chart repository to your local environment. Below we are adding two Helm Chart Repositories.
+```
+helm repo add bitnami https://charts.bitnami.com/bitnami 
+```
+```
+helm repo add stable-charts https://charts.helm.sh/stable
+```
+To list the Helm chart repositories configured in your local environment.
+```
+helm repo list
+```
+To search for Helm charts related to WordPress in the configured Helm repositories
+```
+helm search repo wordpress
+```
+To install the WordPress application using the Bitnami Helm chart with the release name my-wordpress
+```
+helm install my-wordpress bitnami/wordpress
+```
+To list all the releases currently installed on your Kubernetes cluster
+```
+helm list
+```
+To uninstall the WordPress application deployed using Helm with the release name my-wordpress
+```
+helm uninstall my-wordpress
+```
+
+
+### Task 2:  Installing WordPress with Helm
+
+#### Helm setup
 
 Download the shell script for the installation of the Helm package manager and run it.
 ```
@@ -13,7 +51,7 @@ bash helm.sh
 helm version
 ```
 
-### Setup WordPress
+#### Setup WordPress
 #Add bitnami repository to helm which contains WordPress chart.
 ```
 helm repo add bitnami https://charts.bitnami.com/bitnami
@@ -47,7 +85,7 @@ Now, deploy the WordPress using helm install command.  This will set up the pods
 ```
 helm install wordpress --generate-name
 ``` 
-### Verify that WordPress has been set up 
+#### Verify that WordPress has been set up 
 Verify that the pods are running.
 ```
 kubectl get pods
@@ -72,7 +110,7 @@ kubectl get svc --namespace default -w wordpress-1637763307
 ``` 
 Open the browser and paste the service endpoint noted on the previous step. Observe that the WordPress site is up and running.
 
-### Cleanup
+#### Cleanup
 List the current helm release and delete it
 ```
 helm ls

@@ -81,10 +81,11 @@ Search for WordPress package from the repository and install the WordPress chart
 ```
 helm search repo Wordpress
 ```
+Helm Charts can be directly installed from the repo, or the yaml file downloaded, extracted and then chart installed
 ```
 helm install wordpress-chart bitnami/wordpress
 ```
-Perform helm fetch to get the WordPress compressed file to the working directory. Perform ls and verify that a compressed WordPress file is present in PWD.
+OR Perform helm fetch to get the WordPress compressed file to the working directory. Perform ls and verify that a compressed WordPress file is present in PWD.
 ```
 helm fetch bitnami/wordpress
 ```
@@ -97,7 +98,7 @@ tar -xvzf wordpress-19.2.6.tgz
 ```
 Now, deploy the WordPress using helm install command.  This will set up the pods and services for WordPress.
 ```
-helm install wordpress --generate-name
+helm install wordpress --generate-name   ## OR helm install wordpress wordpress
 ``` 
 #### Verify that WordPress has been set up 
 Verify that the pods are running.

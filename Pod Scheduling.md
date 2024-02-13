@@ -305,17 +305,20 @@ Tolerations are applied to pods. Tolerations allow the scheduler to schedule pod
 
 Taints and tolerations work together to ensure that pods are not scheduled onto inappropriate nodes. One or more taints are applied to a node; this marks that the node should not accept any pods that do not tolerate the taints.
 
-Taint Node1 to NoSchedule
+Deploy some pods and check on which nodes they are getting scheduled 
 ```
-kubectl taint nodes node1 key1=value1:NoSchedule
+kubectl run podA --image nginx
 ```
-Label the node as well
+```
+kubectl get po -o wide
+```
+Label the node
 ```
 kubectl label nodes node1 disktype=ssd
 ```
-Deploy a Pod with NodeSelector
+Deploy a pod with the same Node Selector
 ```
-vi pod1.yaml
+vi pod.yaml
 ```
 ```yaml
 apiVersion: v1
@@ -334,33 +337,43 @@ spec:
 ```
 Apply the yaml file
 ```
-kubectl apply -f pod1.yaml
+kubectl apply -f pod.yaml
 ```
+Check on which Node it gets scheduled.
 ```
 kubectl get pods -o wide
 ```
-Comment out the Node Selector and add toleration
+Taint Node1 to NoSchedule
 ```
-vi pod1.yaml
+kubectl taint nodes node1 key1=value1:NoSchedule
+```
+Add toleration to the same pod and replace
+```
+vi pod.yaml
 ```
 ```
-kubectl replace -f nlns-pod.yaml --force
+tolerations:
+- key: "key1"
+  operator: "Equal"
+  value: "value1"
+  effect: "NoSchedule"
 ```
+```
+kubectl replace -f pod.yaml --force
+```
+Check on which node it gets scheduled
 ```
 kubectl get po -o wide
 ```
+Remove the NodeSelector and replace the Pod
 ```
-vi nlns-pod.yaml
+kubectl replace -f pod.yaml --force
 ```
-```
-kubectl get po -o wide
-```
-```
-kubectl replace -f nlns-pod.yaml --force
-```
+Check where the Pod has scheduled now....
 ```
 kubectl get po -o wide
 ```
+Once it gets scheduled back on Node1(which might take executing the replace command multiple times), taint the node with NoExecute.
 ```
 kubectl taint nodes node1 key1=value1:NoExecute
 ```
@@ -368,51 +381,9 @@ kubectl taint nodes node1 key1=value1:NoExecute
 kubectl get po -o wide
 ```
 ```
-kubetl describe po -o wide
-```
-```
-kubetl describe nodes node1
-```
-```
 kubectl describe nodes node1
 ```
-```
-kubectl edit node node1
-```
+Remove the taint NoExecute
 ```
 kubectl taint nodes node1 key1=value1:NoExecute-
 ```
-```
-kubectl get po -o wide
-```
-```
-vi nlns-pod.yaml
-```
-```
-kubectl apply -f nlns-pod.yaml
-```
-```
-kubectl get po -o wide
-```
-```
-vi nlns-pod.yaml
-```
-```
-kubectl replace -f nlns-pod.yaml --force
-```
-```
-kubectl get po -o wide
-```
-```
-
-
-
-
-
-
-
-
-
-
- 
-

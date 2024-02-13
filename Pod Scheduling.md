@@ -379,17 +379,32 @@ Check where the Pod has scheduled now....
 ```
 kubectl get po -o wide
 ```
-Once it gets scheduled back on Node1(which might take executing the replace command multiple times), taint the node with NoExecute.
+Taint the node on which this pod gets deployed with `NoExecute`.
 ```
-kubectl taint nodes node1 key1=value1:NoExecute
+kubectl taint nodes <node-name> key1=value1:NoExecute
 ```
 ```
 kubectl get po -o wide
 ```
-```
-kubectl describe nodes node1
-```
+The Pod gets evicted.
+
 Remove the taint NoExecute
 ```
 kubectl taint nodes node1 key1=value1:NoExecute-
 ```
+Apply the taint PreferNoSchedule to both node1 and node2
+```
+kubectl taint nodes node1 key1=value1:PreferNoSchedule
+```
+```
+kubectl taint nodes node2 key1=value1:PreferNoSchedule
+```
+Trying deploying another pod without any toleration.
+
+Notice it gets scheduled on Node2. reason being Node1 has NoSchedule Taint still enabled.
+```
+kubectl run pod-test --image nignx
+```
+
+CLEANUP
+Check the taints on all the ndoes and untaint the ones that you have applied.

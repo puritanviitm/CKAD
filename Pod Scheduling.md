@@ -305,33 +305,105 @@ Tolerations are applied to pods. Tolerations allow the scheduler to schedule pod
 
 Taints and tolerations work together to ensure that pods are not scheduled onto inappropriate nodes. One or more taints are applied to a node; this marks that the node should not accept any pods that do not tolerate the taints.
 
-
-kubectl taint nodes node1 key1=value1:node.kubernetes.io/NoSchedule
+Taint Node1 to NoSchedule
+```
 kubectl taint nodes node1 key1=value1:NoSchedule
-kubectl get po -o wide
-ls
-vi nlns-pod.yaml
-kubectl get nodes --show-labels
+```
+Label the node as well
+```
+kubectl label nodes node1 disktype=ssd
+```
+Deploy a Pod with NodeSelector
+```
+vi pod1.yaml
+```
+```yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: pod1
+  labels:
+    env: test
+spec:
+  containers:
+  - name: pod1-crt
+    image: nginx
+  nodeSelector:
+    disktype: ssd
+
+```
+Apply the yaml file
+```
+kubectl apply -f pod1.yaml
+```
+```
+kubectl get pods -o wide
+```
+Comment out the Node Selector and add toleration
+```
+vi pod1.yaml
+```
+```
 kubectl replace -f nlns-pod.yaml --force
+```
+```
 kubectl get po -o wide
+```
+```
 vi nlns-pod.yaml
+```
+```
 kubectl get po -o wide
+```
+```
 kubectl replace -f nlns-pod.yaml --force
+```
+```
 kubectl get po -o wide
+```
+```
 kubectl taint nodes node1 key1=value1:NoExecute
+```
+```
 kubectl get po -o wide
+```
+```
 kubetl describe po -o wide
+```
+```
 kubetl describe nodes node1
+```
+```
 kubectl describe nodes node1
+```
+```
 kubectl edit node node1
+```
+```
 kubectl taint nodes node1 key1=value1:NoExecute-
+```
+```
 kubectl get po -o wide
+```
+```
 vi nlns-pod.yaml
+```
+```
 kubectl apply -f nlns-pod.yaml
+```
+```
 kubectl get po -o wide
+```
+```
 vi nlns-pod.yaml
+```
+```
 kubectl replace -f nlns-pod.yaml --force
+```
+```
 kubectl get po -o wide
+```
+```
 
 
 

@@ -38,7 +38,13 @@ To download the Bitnami WordPress Helm chart to your local machine.
 ```
 helm fetch bitnami/wordpress
 ```
-
+To remove a Helm repository from your local Helm client configuration
+```
+helm repo remove stable-charts
+```
+```
+helm repo remove bitnami
+```
 
 ### Task 2:  Installing WordPress with Helm
 
